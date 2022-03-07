@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+#include"team_details.h"
+details::details()
+{
+        no_of_players=0;
+        no_of_foreign_players=0;
+        purse=0;
+        no_of_batsmans=0;
+        no_of_bowlers=0;
+        no_of_All_rounders=0;
+        no_of_wicketkeepers=0;
+}
+
+details::details(int n,int fn,long int p,int ba,int bo,int a,int w)
+{
+        no_of_players=n;
+        no_of_foreign_players=fn;
+        purse=p;
+        no_of_batsmans=ba;
+        no_of_bowlers=bo;
+        no_of_All_rounders=a;
+        no_of_wicketkeepers=w;
+}
+void details::display()
+{
+        cout<<"Slots remaining         :"<<25-no_of_players<<"\n";
+        cout<<"Foreign slots remaining :"<<8-no_of_foreign_players<<"\n";
+        cout<<"Purse remaing           :"<<purse<<"\n";
+        cout<<"Existing team details \n";
+        cout<<"No of batsman           :"<<no_of_batsmans<<"\n";
+        cout<<"No of bowler            :"<<no_of_bowlers<<"\n";
+        cout<<"No of all rounders      :"<<no_of_All_rounders<<"\n";
+        cout<<"No of wicket-keepers    :"<<no_of_wicketkeepers<<"\n";
+}
+
