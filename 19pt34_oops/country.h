@@ -1,19 +1,20 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <stdio.h>
 #include <iomanip>
 #ifndef country_h
 #define country_h
+
+using namespace std;
 class country
 {
-private:
-        char Country[20];
-        long int base_price=0;
-        
+
 public:
+        string Country;
+        long int base_price=0;
         country();
-        char getCountry();
-        long int getPrice();
+        char getCountry() const;
+        long int getPrice() const;
         void SetData();
 };
 #endif
