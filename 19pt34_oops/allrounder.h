@@ -7,6 +7,6 @@ public:
         void printData() override;
         void Ar_retrieveData(string,int,int,int,float,float,int,int,int,int,float,float,float,int,int,int,int,string,string,string,string,string,string,int) const;
         void Ar_filterData(int,int,float,float,int,float,float,float) const;
-        int Ar_base();
-        int Ar_foreign_player();
+        int Ar_base() const;
+        int Ar_foreign_player() const;
 };
