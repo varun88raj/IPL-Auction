@@ -5,12 +5,11 @@
 #ifndef country_h
 #define country_h
 
-using namespace std;
 class country
 {
 
 public:
-        string Country = "Country";
+        std::string Country = "Country";
         long int base_price=0;
         char getCountry() const;
         long int getPrice() const;
