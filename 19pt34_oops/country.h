@@ -10,9 +10,8 @@ class country
 {
 
 public:
-        string Country;
+        string Country = "Country";
         long int base_price=0;
-        country();
         char getCountry() const;
         long int getPrice() const;
         void SetData();
