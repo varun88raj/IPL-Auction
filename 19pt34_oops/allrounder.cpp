@@ -30,7 +30,7 @@ void allrounder::printAllRound() const
         cout<<c->Country<<"\n";
         cout<<c->base_price<<"\n";
 }
-void allrounder::retrieveAllRound(string &n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,int w,float bowavg,float bowstr,float eco,int _4w,int _5w,int bestrun,int bestwic,string &co,string &typ,string &bowtyp,string &boh,string &bah,string &pos,int base)
+void allrounder::retrieveAllRound(string_view n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,int w,float bowavg,float bowstr,float eco,int _4w,int _5w,int bestrun,int bestwic,string_view co,string_view typ,string_view bowtyp,string_view boh,string_view bah,string_view pos,int base)
 {
         name=n;
         matches=m;
