@@ -19,10 +19,10 @@ private:
         bowling_figures best;
 public:
         bowler();
-        virtual void setData();
-        virtual void printData();
-        virtual void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
-        virtual void filterData(int,float,float,float);
+        void setData();
+        void printData();
+        void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
+        void filterData(int,float,float,float);
         int base();
         int foreign_player();
 };
