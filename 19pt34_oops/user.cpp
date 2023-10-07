@@ -347,7 +347,7 @@ void user::Login()
                         strcpy(bah,arr[j][k]);k++;
                         strcpy(pos,arr[j][k]);k++;
                         base=myatoi(arr[j][k]);
-                        Al[j].retrieveData(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
+                        Al[j].Ar_retrieveData(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
         }
         cout<<setw(4)<<"ID"<<setw(20)<<"NAME"<<setw(4)<<"MAT"<<setw(8)<<"RUNS"<<setw(8)<<"BAT AVG"<<setw(8)<<"BAT STR"<<setw(6)<<"50s"<<setw(6)<<"100s"<<setw(6)<<"BEST"<<setw(15)<<"POSITION"<<setw(15)<<"TYPE"<<setw(15)<<"BOWL TYPE"<<setw(15)<<"HAND"<<setw(15)<<"HAND"<<setw(15)<<"COUNTRY"<<setw(15)<<"PRICE"<<"\n";
         for(int i=0;i<15;i++)
@@ -448,7 +448,7 @@ void user::Login()
                 {
                         for(int i=0;i<8;i++)
                         {
-                                Al[i].filterData(match,run,bat_avg,bat_str,wicket,bowl_avg,bowl_str,eco);
+                                Al[i].Ar_filterData(match,run,bat_avg,bat_str,wicket,bowl_avg,bowl_str,eco);
                         }
                 }
                 cout<<"There may be chances that no players satisfy all your filters press 'y' to apply filter again \n\n";
@@ -634,10 +634,10 @@ void user::Login()
                                         {
                                                 if(yourteam.purse-total>0)
                                                 {
-                                                        if(yourteam.no_of_foreign_players<8||Al[buy_id-26].foreign_player()==-1)
+                                                        if(yourteam.no_of_foreign_players<8||Al[buy_id-26].Ar_foreign_player()==-1)
                                                         {
                                                                 cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Al[buy_id-26].base()+bid;
+                                                                total=Al[buy_id-26].Ar_base()+bid;
                                                                 cout<<"base price + bid amount is "<<total<<"\n\n";
                                                                 yourteam.purse-=total;
                                                                 yourteam.no_of_All_rounders+=1;
