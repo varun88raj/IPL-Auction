@@ -8,6 +8,7 @@ private:
         int no_of_bowlers;
         int no_of_All_rounders;
         int no_of_wicketkeepers;
+public:
         details();
         details(int,int,long int,int,int,int,int);
         void display();
