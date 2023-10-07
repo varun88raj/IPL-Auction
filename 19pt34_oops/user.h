@@ -1,7 +1,8 @@
 #include "team_details.h"
+#include <string>
 class user
 {
 public:
-        char username[20];
+        std::string username;
         void Login();
 };
