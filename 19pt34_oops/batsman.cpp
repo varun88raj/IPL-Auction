@@ -52,7 +52,7 @@ void batsman::printBatsman() const
         cout<<c->Country<<"\n";
         cout<<c->base_price<<"\n";
 }
-void batsman::retrieveBatsman(string& n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,string& pos,string& typ,string& bah,string& boh,string &bowtyp,string &co,int base)
+void batsman::retrieveBatsman(string_view n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,string_view pos,string_view typ,string_view bah,string_view boh,string_view bowtyp,string_view co,int base)
 {
         name=n;
         matches=m;
