@@ -1,6 +1,6 @@
 #include "bowler.h"
-
-void bowler::setData()
+using namespace std;
+void bowler::setBowler()
 {
         player::setData();
         do
@@ -41,11 +41,26 @@ void bowler::setData()
         }while(best.wickets_taken>10);
         fflush(stdin);
 }
-void bowler::printData() const
+void bowler::printBowler() const
 {
-        cout<<setw(4)<<player_id<<setw(20)<<name<<setw(4)<<matches<<setw(6)<<wickets<<setw(8)<<economy<<setw(8)<<bowling_average<<setw(8)<<bowling_strike_rate<<setw(4)<<_4_wicket_haul<<setw(4)<<_5_wicket_haul<<setw(6)<<best.runs_given<<"/"<<best.wickets_taken<<setw(15)<<s->position<<setw(15)<<s->type<<setw(15)<<s->bowl_type<<setw(15)<<s->batting_hand<<setw(15)<<s->batting_hand<<setw(15)<<c->Country<<setw(15)<<c->base_price<<"\n";
+        cout<<player_id<<"\n";
+        cout<<name<<"\n";
+        cout<<matches<<"\n";
+        cout<<wickets<<"\n";
+        cout<<economy<<"\n";
+        cout<<bowling_average<<"\n";
+        cout<<bowling_strike_rate<<"\n";
+        cout<<_4_wicket_haul<<"\n";
+        cout<<_5_wicket_haul<<"\n";
+        cout<<best.runs_given<<"/"<<best.wickets_taken<<"\n";
+        cout<<s->position<<"\n";
+        cout<<s->type<<"\n";
+        cout<<s->bowl_type<<"\n";
+        cout<<s->bowling_hand<<"\n";
+        cout<<c->Country<<"\n";
+        cout<<c->base_price<<"\n";
 }
-void bowler::retrieveData(string n,int m,int p,int w,float bowavg,float bowstr,float e,int _4,int _5,int br,int bw,string pos,string typ,string bah,string boh,string bowtyp,string co,int base) const
+void bowler::retrieveBowler(string n,int m,int p,int w,float bowavg,float bowstr,float e,int _4,int _5,int br,int bw,string pos,string typ,string bah,string boh,string bowtyp,string co,int base)
 {
         name=n;
         matches=m;
@@ -58,26 +73,26 @@ void bowler::retrieveData(string n,int m,int p,int w,float bowavg,float bowstr,f
         _5_wicket_haul=_5;
         best.runs_given=br;
         best.wickets_taken=bw;
-        c->Country,co;
-        s->type,typ;
-        s->bowl_type,bowtyp;
-        s->bowling_hand,boh;
-        s->batting_hand,bah;
-        s->position,pos;
+        c->Country=co;
+        s->type=typ;
+        s->bowl_type=bowtyp;
+        s->bowling_hand=boh;
+        s->batting_hand=bah;
+        s->position=pos;
         c->base_price=base;
 }
-void bowler::filterData(int w,float bowavg,float bowstr,float eco) const
+void bowler::filterBowler(int w,float bowavg,float bowstr,float eco) const
 {
         if((wickets>w)&&((bowling_average<bowavg)||(bowavg==0))&&((bowling_strike_rate<bowstr)||(bowstr==0))&&((economy<eco)||(eco==0)))
         {
                 printData();
         }
 }
-int bowler::base() const
+int bowler::base_of_bowl() const
 {
         return c->base_price;
 }
-int bowler::foreign_player() const
+int bowler::foreign_player_of_bowl() const
 {
         if(c->Country,"Foreigner")
         {
