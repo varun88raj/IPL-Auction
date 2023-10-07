@@ -9,7 +9,7 @@ private:
         int no_of_All_rounders=0;
         int no_of_wicketkeepers=0;
 public:
-        details(int,int,long int,int,int,int,int);
+        setdetails(int,int,long int,int,int,int,int);
         void display();
 };
 
