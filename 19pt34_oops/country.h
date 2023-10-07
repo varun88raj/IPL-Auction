@@ -8,7 +8,7 @@ class country
 {
 private:
         char Country[20];
-        long int base_price;
+        long int base_price=0;
         
 public:
         country();
