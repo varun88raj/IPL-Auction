@@ -11,11 +11,11 @@ protected:
         int _100s=0;
         int best_score=0;
 public:
-        virtual void setData() override;
-        virtual void printData() override;
-        void retrieveData(string,int,int,int,float,float,int,int,int,string,string,string,string,string,string,int) const;
-        void filterData(int,int,float,float) const;
-        int base() const;
-        int foreign_player() const;
+        void setBatsman();
+        void printBatsman() const;
+        void retrieveBatsman(std::string,int,int,int,float,float,int,int,int,std::string,std::string,std::string,std::string,std::string,std::string,int);
+        void filterBatsman(int,int,float,float) const;
+        int base_of_bat() const;
+        int foreign_player_of_bat() const;
 };
 #endif
