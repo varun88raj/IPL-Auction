@@ -1,15 +1,14 @@
-#include <stdlib.h>
 #include "player.h"
 player::player()
 {
-        strcpy(name,"name");
+        name="name";
         c = std::make_unique<country>();
         s = std::make_unique<style>();
 }
 void player::setData()
 {
         cout<<"Enter the player name ";
-        gets(name);
+        cin>>name;
         fflush(stdin);
         do
         {
