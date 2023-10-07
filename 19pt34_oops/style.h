@@ -6,14 +6,12 @@
 using namespace std;
 class style
 {
-
 public:
-        string position;
-        string type;
-        string batting_hand;
-        string bowling_hand;
-        string bowl_type;
-        style();
+        string position="position";
+        string type="type";
+        string batting_hand="bat";
+        string bowling_hand="bowl";
+        string bowl_type="bowl_type";
         void SetData();
         char getPosition() const;
         char getType() const;
