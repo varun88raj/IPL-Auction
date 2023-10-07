@@ -94,7 +94,7 @@ int bowler::base_of_bowl() const
 }
 int bowler::foreign_player_of_bowl() const
 {
-        if(c->Country,"Foreigner")
+        if(c->Country=="Foreigner")
         {
                 return 1;
         }
