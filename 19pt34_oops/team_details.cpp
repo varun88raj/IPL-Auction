@@ -2,7 +2,7 @@
 #include"team_details.h"
 using namespace std;
 
-details::setdetails(int n,int fn,long int p,int ba,int bo,int a,int w)
+void details::setdetails(int n,int fn,long int p,int ba,int bo,int a,int w)
 {
         no_of_players=n;
         no_of_foreign_players=fn;
