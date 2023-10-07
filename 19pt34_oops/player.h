@@ -9,7 +9,7 @@ class player
 {
 protected:
         int player_id=0;
-        string name;
+        string name = "name";
         int matches=0;
         std::unique_ptr<country> c;
         std::unique_ptr<style> s;
