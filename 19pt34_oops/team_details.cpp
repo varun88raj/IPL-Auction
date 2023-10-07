@@ -2,17 +2,6 @@
 #include"team_details.h"
 using namespace std;
 
-details::details()
-{
-        no_of_players=0;
-        no_of_foreign_players=0;
-        purse=0;
-        no_of_batsmans=0;
-        no_of_bowlers=0;
-        no_of_All_rounders=0;
-        no_of_wicketkeepers=0;
-}
-
 details::details(int n,int fn,long int p,int ba,int bo,int a,int w)
 {
         no_of_players=n;
