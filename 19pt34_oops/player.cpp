@@ -25,7 +25,7 @@ void player::setData()
         }while(player_id<0);
 
 }
-void player::printData()
+void player::printData() const
 {
         cout<<player_id<<"\n";
         cout<<name<<"\n";
