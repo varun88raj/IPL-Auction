@@ -1,14 +1,18 @@
 #ifndef style_h
 #define style_h
+#include <string>
+#include <iostream>
+
+using namespace std;
 class style
 {
-private:
-        char position[20];
-        char type[20];
-        char batting_hand[10];
-        char bowling_hand[10];
-        char bowl_type[10];
+
 public:
+        string position;
+        string type;
+        string batting_hand;
+        string bowling_hand;
+        string bowl_type;
         style();
         void SetData();
         char getPosition();
@@ -18,4 +22,3 @@ public:
         char getBowling_type();
 };
 #endif
-
