@@ -13,7 +13,7 @@ protected:
 public:
         void setBatsman();
         void printBatsman() const;
-        void retrieveBatsman(std::string&,int,int,int,float,float,int,int,int,std::string&,std::string&,std::string&,std::string&,std::string&,std::string&,int);
+        void retrieveBatsman(std::string_view,int,int,int,float,float,int,int,int,std::string_view,std::string_view,std::string_view,std::string_view,std::string_view,std::string_view,int);
         void filterBatsman(int,int,float,float) const;
         int base_of_bat() const;
         int foreign_player_of_bat() const;
