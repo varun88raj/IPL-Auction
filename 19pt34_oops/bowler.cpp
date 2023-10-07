@@ -60,7 +60,7 @@ void bowler::printBowler() const
         cout<<c->Country<<"\n";
         cout<<c->base_price<<"\n";
 }
-void bowler::retrieveBowler(const string &n,int m,int p,int w,float bowavg,float bowstr,float e,int _4,int _5,int br,int bw,const string &pos,const string &typ,const string &bah,const string &boh,const string &bowtyp,const string &co,int base)
+void bowler::retrieveBowler(string_view n,int m,int p,int w,float bowavg,float bowstr,float e,int _4,int _5,int br,int bw,string_view pos,string_view typ,string_view bah,string_view boh,string_view bowtyp,string_view co,int base)
 {
         name=n;
         matches=m;
