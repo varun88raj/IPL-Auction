@@ -4,12 +4,12 @@
 class batsman:virtual public player
 {
 private:
-        int runs;
+        int runs=0;
         float batting_average=0.0;
-        float batting_strike_rate;
-        int _50s;
-        int _100s;
-        int best_score;
+        float batting_strike_rate=0;
+        int _50s=0;
+        int _100s=0;
+        int best_score=0;
 public:
         batsman();
         void setData();
