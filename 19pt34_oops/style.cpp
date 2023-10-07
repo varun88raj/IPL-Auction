@@ -1,13 +1,5 @@
 #include "style.h"
 
-style::style()
-{
-        position="position";
-        type="type";
-        batting_hand="bat";
-        bowling_hand="bowl";
-        bowl_type="bowl_type";
-}
 void style::SetData()
 {
         do
