@@ -1,5 +1,5 @@
 #include "style.h"
-
+using namespace std;
 void style::SetData()
 {
         do
