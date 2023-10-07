@@ -22,7 +22,7 @@ details::details(int n,int fn,long int p,int ba,int bo,int a,int w)
         no_of_All_rounders=a;
         no_of_wicketkeepers=w;
 }
-void details::display()
+void details::display() const
 {
         cout<<"Slots remaining         :"<<25-no_of_players<<"\n";
         cout<<"Foreign slots remaining :"<<8-no_of_foreign_players<<"\n";
