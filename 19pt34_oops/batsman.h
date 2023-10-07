@@ -3,7 +3,7 @@
 #define bat_h
 class batsman:virtual public player
 {
-private:
+protected:
         int runs=0;
         float batting_average=0.0;
         float batting_strike_rate=0;
@@ -11,11 +11,11 @@ private:
         int _100s=0;
         int best_score=0;
 public:
-        void setData() override;
-        void printData() override;
-        void retrieveData(char*,int,int,int,float,float,int,int,int,char*,char*,char*,char*,char*,char*,int);
-        void filterData(int,int,float,float);
-        int base();
-        int foreign_player();
+        virtual void setData() override;
+        virtual void printData() override;
+        void retrieveData(string,int,int,int,float,float,int,int,int,string,string,string,string,string,string,int) const;
+        void filterData(int,int,float,float) const;
+        int base() const;
+        int foreign_player() const;
 };
 #endif
