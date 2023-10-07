@@ -9,9 +9,9 @@ private:
         int player_id;
         char name[20];
         int matches;
-public:
         country*c;
         style*s;
+public:
         player();
         virtual void setData();
         virtual void printData();
