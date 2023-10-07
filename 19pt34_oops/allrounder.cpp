@@ -4,7 +4,7 @@ void allrounder::setData()
         batsman::setData();
         bowler::setData();
 }
-void allrounder::printData()
+void allrounder::printData() const
 {
         cout<<setw(4)<<player_id<<setw(20)<<name<<setw(4)<<matches<<setw(6)<<runs<<setw(8)<<batting_average<<setw(8)<<batting_strike_rate<<setw(6)<<_50s<<setw(6)<<_100s<<setw(6)<<best_score<<setw(6)<<wickets<<setw(8)<<bowling_average<<setw(8)<<bowling_strike_rate<<setw(8)<<economy<<setw(4)<<_4_wicket_haul<<setw(4)<<_5_wicket_haul<<setw(6)<<best.runs_given<<"/"<<best.wickets_taken
         <<setw(15)<<s->position<<setw(15)<<s->type<<setw(10)<<s->bowl_type<<setw(8)<<s->batting_hand<<setw(8)<<s->batting_hand<<setw(15)<<c->Country<<setw(10)<<c->base_price<<"\n";
