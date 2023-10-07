@@ -36,18 +36,18 @@ void allrounder::retrieveData(char n[20],int m,int p,int r,float batavg,float ba
         strcpy(s->position,pos);
         c->base_price=base;
 }
-void allrounder::filterData(int m,int r,float batavg,float batstr,int w,float bowavg,float bowstr,float eco)
+void allrounder::filterData(int m,int r,float batavg,float batstr,int w,float bowavg,float bowstr,float eco) const
 {
         if((matches>m)&&(runs>r)&&(batting_average>batavg)&&(batting_strike_rate>batstr)&&(wickets>w)&&((bowling_average<bowavg)||(bowavg==0))&&((bowling_strike_rate<bowstr)||(bowstr==0))&&((economy<eco)||(eco==0)))
         {
                 printData();
         }
 }
-int allrounder::base()
+int allrounder::base() const
 {
         return c->base_price;
 }
-int allrounder::foreign_player()
+int allrounder::foreign_player() const
 {
         if(strcmp(c->Country,"Foreigner")==0)
         {
