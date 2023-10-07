@@ -1,15 +1,36 @@
 #include "allrounder.h"
-void allrounder::setData()
+using namespace std;
+void allrounder::setAllRound()
 {
         batsman::setData();
         bowler::setData();
 }
-void allrounder::printData() const
+void allrounder::printAllRound() const
 {
-        cout<<setw(4)<<player_id<<setw(20)<<name<<setw(4)<<matches<<setw(6)<<runs<<setw(8)<<batting_average<<setw(8)<<batting_strike_rate<<setw(6)<<_50s<<setw(6)<<_100s<<setw(6)<<best_score<<setw(6)<<wickets<<setw(8)<<bowling_average<<setw(8)<<bowling_strike_rate<<setw(8)<<economy<<setw(4)<<_4_wicket_haul<<setw(4)<<_5_wicket_haul<<setw(6)<<best.runs_given<<"/"<<best.wickets_taken
-        <<setw(15)<<s->position<<setw(15)<<s->type<<setw(10)<<s->bowl_type<<setw(8)<<s->batting_hand<<setw(8)<<s->batting_hand<<setw(15)<<c->Country<<setw(10)<<c->base_price<<"\n";
+        cout<<player_id<<"\n";
+        cout<<name<<"\n";
+        cout<<matches<<"\n";
+        cout<<runs<<"\n";
+        cout<<batting_average<<"\n";
+        cout<<batting_strike_rate<<"\n";
+        cout<<_50s<<"\n";
+        cout<<_100s<<"\n";
+        cout<<wickets<<"\n";
+        cout<<economy<<"\n";
+        cout<<bowling_average<<"\n";
+        cout<<bowling_strike_rate<<"\n";
+        cout<<_4_wicket_haul<<"\n";
+        cout<<_5_wicket_haul<<"\n";
+        cout<<best.runs_given<<"/"<<best.wickets_taken<<"\n";
+        cout<<best_score;
+        cout<<s->position<<"\n";
+        cout<<s->type<<"\n";
+        cout<<s->batting_hand<<"\n";
+        cout<<s->bowling_hand<<"\n";
+        cout<<c->Country<<"\n";
+        cout<<c->base_price<<"\n";
 }
-void allrounder::Ar_retrieveData(string n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,int w,float bowavg,float bowstr,float eco,int _4w,int _5w,int bestrun,int bestwic,string co,string typ,string bowtyp,string boh,string bah,string pos,int base) const
+void allrounder::retrieveAllRound(string n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,int w,float bowavg,float bowstr,float eco,int _4w,int _5w,int bestrun,int bestwic,string co,string typ,string bowtyp,string boh,string bah,string pos,int base)
 {
         name=n;
         matches=m;
@@ -36,18 +57,18 @@ void allrounder::Ar_retrieveData(string n,int m,int p,int r,float batavg,float b
         s->position=pos;
         c->base_price=base;
 }
-void allrounder::Ar_filterData(int m,int r,float batavg,float batstr,int w,float bowavg,float bowstr,float eco) const
+void allrounder::filterAllRound(int m,int r,float batavg,float batstr,int w,float bowavg,float bowstr,float eco) const
 {
         if((matches>m)&&(runs>r)&&(batting_average>batavg)&&(batting_strike_rate>batstr)&&(wickets>w)&&((bowling_average<bowavg)||(bowavg==0))&&((bowling_strike_rate<bowstr)||(bowstr==0))&&((economy<eco)||(eco==0)))
         {
                 printData();
         }
 }
-int allrounder::Ar_base() const
+int allrounder::base_of_AllRound() const
 {
         return c->base_price;
 }
-int allrounder::Ar_foreign_player() const
+int allrounder::foreign_player_AllRound() const
 {
         if(c->Country=="Foreigner")
         {
