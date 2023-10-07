@@ -1,5 +1,5 @@
 #include "country.h"
-
+using namespace std;
 void country::SetData()
 {
         do
