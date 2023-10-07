@@ -71,7 +71,7 @@ int batsman::base() const
 }
 int batsman::foreign_player() const
 {
-        if((c->Country=="Foreigner"))
+        if(c->Country=="Foreigner")
         {
                 return 1;
         }
