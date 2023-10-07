@@ -2,7 +2,6 @@
 #include "country.h"
 #ifndef player_h
 #define player_h
-//class filter;
 class player
 {
 private:
