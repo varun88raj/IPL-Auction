@@ -5,14 +5,15 @@
 #include <time.h>
 #include "user.h"
 #include <fstream>
+#include <vector>
 #include "allrounder.h"
 using namespace std;
-int sold[33];
-int sold_index;
-int check(int iD)
+
+int check(vector<int>sold,int iD)
 {
+        int n = sold.size();
         int flag3=0;
-        for(int i=0;i<33;i++)
+        for(int i=0;i<n;i++)
         {
                 if(iD==sold[i])
                 {
@@ -65,11 +66,10 @@ int myatoi(char temp[20])
 }
 void user::Login()
 {
-        char un[20];
+        string un;
         cout<<"Enter user name ";
         cin>>un;
         fflush(stdin);
-        strcpy(username,un);
         cout<<"Welcome to ipl auction game "<<username<<"\n";
         int flag=1;
         int choice;
@@ -174,16 +174,30 @@ void user::Login()
                 }
         }
         yourteam.display();
-        char teams[8][5]={"MI","RCB","KKR","CSK","KXIP","DC","SRH","RR"};
-        char nam[20];
-        char coun[20];
-        char typ[20];
-        char bow_typ[20];
-        char boh[20];
-        char bah[20];
-        char pos[20];
-        int match,pd,run,_50,_100,Best,wicket,_4w,_5w,best_run,best_wic;
-        float bat_avg,bat_str,bowl_avg,bowl_str,eco;
+        string teams[8]={"MI","RCB","KKR","CSK","KXIP","DC","SRH","RR"};
+        string nam;
+        string coun;
+        string typ;
+        string bow_typ;
+        string boh;
+        string bah;
+        string pos;
+        int match;
+        int pd;
+        int run;
+        int _50;
+        int _100;
+        int Best;
+        int wicket;
+        int _4w;
+        int _5w;
+        int best_run;
+        int best_wic;
+        float bat_avg;
+        float bat_str;
+        float bowl_avg;
+        float bowl_str;
+        float eco;
         int base;
         batsman Ba[15];
         bowler Bo[10];
@@ -220,7 +234,7 @@ void user::Login()
         for(int j=0;j<15;j++)
         {
                 int k=0;
-                strcpy(nam,arrbat[j][k]);k++;
+                nam=arrbat[j][k];k++;
                 match=myatoi((arrbat[j][k]));k++;
                 pd=myatoi(arrbat[j][k]);k++;
                 run=myatoi(arrbat[j][k]);k++;
@@ -229,14 +243,14 @@ void user::Login()
                 _50=myatoi(arrbat[j][k]);k++;
                 _100=myatoi(arrbat[j][k]);k++;
                 Best=myatoi(arrbat[j][k]);k++;
-                strcpy(pos,arrbat[j][k]);k++;
-                strcpy(typ,arrbat[j][k]);k++;
-                strcpy(bah,arrbat[j][k]);k++;
-                strcpy(boh,arrbat[j][k]);k++;
-                strcpy(bow_typ,arrbat[j][k]);k++;
-                strcpy(coun,arrbat[j][k]);k++;
+                pos=arrbat[j][k];k++;
+                typ=arrbat[j][k];k++;
+                bah=arrbat[j][k];k++;
+                boh=arrbat[j][k];k++;
+                bow_typ=arrbat[j][k];k++;
+                coun=arrbat[j][k];k++;
                 base=myatoi(arrbat[j][k]);
-                Ba[j].retrieveData(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,pos,typ,bow_typ,bah,boh,coun,base);
+                Ba[j].retrieveBatsman(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,pos,typ,bow_typ,bah,boh,coun,base);
         }
         ifstream file2;
         file2.open("bowler_list.txt",ios::in);
@@ -269,7 +283,7 @@ void user::Login()
         for(int j=0;j<10;j++)
         {
                 int k=0;
-                strcpy(nam,arrbow[j][k]);k++;
+                nam=arrbow[j][k];k++;
                 match=myatoi((arrbow[j][k]));k++;
                 pd=myatoi(arrbow[j][k]);k++;
                 wicket=myatoi(arrbow[j][k]);k++;
@@ -280,14 +294,14 @@ void user::Login()
                 _5w=myatoi(arrbow[j][k]);k++;
                 best_run=myatoi(arrbow[j][k]);k++;
                 best_wic=myatoi(arrbow[j][k]);k++;
-                strcpy(pos,arrbow[j][k]);k++;
-                strcpy(typ,arrbow[j][k]);k++;
-                strcpy(bah,arrbow[j][k]);k++;
-                strcpy(boh,arrbow[j][k]);k++;
-                strcpy(bow_typ,arrbow[j][k]);k++;
-                strcpy(coun,arrbow[j][k]);k++;
+                pos=arrbow[j][k];k++;
+                typ=arrbow[j][k];k++;
+                bah=arrbow[j][k];k++;
+                boh=arrbow[j][k];k++;
+                bow_typ=arrbow[j][k];k++;
+                coun=arrbow[j][k];k++;
                 base=myatoi(arrbow[j][k]);
-                Bo[j].retrieveData(nam,match,pd,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,pos,typ,bow_typ,bah,boh,coun,base);
+                Bo[j].retrieveBowler(nam,match,pd,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,pos,typ,bow_typ,bah,boh,coun,base);
         }
         char arr[8][24][20];
         x=0;y=0;z=0;
@@ -323,7 +337,7 @@ void user::Login()
         for(int j=0;j<8;j++)
         {
                         int k=0;
-                        strcpy(nam,arr[j][k]);k++;
+                        nam=arr[j][k];k++;
                         match=myatoi((arr[j][k]));k++;
                         pd=myatoi(arr[j][k]);k++;
                         run=myatoi(arr[j][k]);k++;
@@ -340,36 +354,36 @@ void user::Login()
                         _5w=myatoi(arr[j][k]);k++;
                         best_run=myatoi(arr[j][k]);k++;
                         best_wic=myatoi(arr[j][k]);k++;
-                        strcpy(coun,arr[j][k]);k++;
-                        strcpy(typ,arr[j][k]);k++;
-                        strcpy(bow_typ,arr[j][k]);k++;
-                        strcpy(boh,arr[j][k]);k++;
-                        strcpy(bah,arr[j][k]);k++;
-                        strcpy(pos,arr[j][k]);k++;
+                        coun=arr[j][k];k++;
+                        typ=arr[j][k];k++;
+                        bow_typ=arr[j][k];k++;
+                        boh=arr[j][k];k++;
+                        bah=arr[j][k];k++;
+                        pos=arr[j][k];k++;
                         base=myatoi(arr[j][k]);
-                        Al[j].Ar_retrieveData(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
+                        Al[j].retrieveAllRound(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
         }
-        cout<<setw(4)<<"ID"<<setw(20)<<"NAME"<<setw(4)<<"MAT"<<setw(8)<<"RUNS"<<setw(8)<<"BAT AVG"<<setw(8)<<"BAT STR"<<setw(6)<<"50s"<<setw(6)<<"100s"<<setw(6)<<"BEST"<<setw(15)<<"POSITION"<<setw(15)<<"TYPE"<<setw(15)<<"BOWL TYPE"<<setw(15)<<"HAND"<<setw(15)<<"HAND"<<setw(15)<<"COUNTRY"<<setw(15)<<"PRICE"<<"\n";
         for(int i=0;i<15;i++)
         {
                 Ba[i].printData();
         }
-        cout<<"\n";
-        cout<<setw(4)<<"ID"<<setw(20)<<"NAME"<<setw(4)<<"MAT"<<setw(6)<<"WKT"<<setw(8)<<"BOWLAVG"<<setw(8)<<"BOWLSTR"<<setw(8)<<"ECONOMY"<<setw(4)<<"4ws"<<setw(4)<<"5ws"<<setw(8)<<"BEST"<<setw(15)<<"POSITION"<<setw(15)<<"TYPE"<<setw(15)<<"BOWL TYPE"<<setw(15)<<"HAND"<<setw(15)<<"HAND"<<setw(15)<<"COUNTRY"<<setw(15)<<"PRICE"<<"\n";
+        cout<<"\n-------------------------------------------------------------------------\n";
         for(int i=0;i<10;i++)
         {
                 Bo[i].printData();
         }
-        cout<<"\n";
-        cout<<setw(4)<<"ID"<<setw(20)<<"NAME"<<setw(4)<<"MAT"<<setw(6)<<"RUNS"<<setw(8)<<"BAT AVG"<<setw(8)<<"BAT STR"<<setw(6)<<"50s"<<setw(6)<<"100s"<<setw(6)<<"BEST"<<setw(6)<<"WKT"<<setw(8)<<"BOWLAVG"<<setw(8)<<"BOWLSTR"<<setw(8)<<"ECONOMY"<<setw(4)<<"4ws"<<setw(4)<<"5ws"<<setw(8)<<"BEST"<<setw(15)<<"POSITION"<<setw(15)<<"TYPE"<<setw(10)<<"BOWL TYPE"<<setw(8)<<"HAND"<<setw(8)<<"HAND"<<setw(15)<<"COUNTRY"<<setw(10)<<"PRICE"<<"\n";
+        cout<<"\n-------------------------------------------------------------------------\n";
         for(int i=0;i<8;i++)
         {
                 Al[i].printData();
         }
+        cout<<"\n-------------------------------------------------------------------------\n";
+
         char chfilter;
         do
         {
-                int opinion,yes_no;
+                int opinion;
+                int yes_no;
                 cout<<"Enter the list of players you want filter out and see \n";
                 cout<<"(1).Batsman (2).Bowler (3).All-rounder \n";
                 cin>>opinion;
@@ -434,31 +448,32 @@ void user::Login()
                 {
                         for(int i=0;i<15;i++)
                         {
-                                Ba[i].filterData(match,run,bat_avg,bat_str);
+                                Ba[i].filterBatsman(match,run,bat_avg,bat_str);
                         }
                 }
                 if(opinion==2)
                 {
                         for(int i=0;i<10;i++)
                         {
-                                Bo[i].filterData(wicket,bowl_avg,bowl_str,eco);
+                                Bo[i].filterBowler(wicket,bowl_avg,bowl_str,eco);
                         }
                 }
                 if(opinion==3)
                 {
                         for(int i=0;i<8;i++)
                         {
-                                Al[i].Ar_filterData(match,run,bat_avg,bat_str,wicket,bowl_avg,bowl_str,eco);
+                                Al[i].filterAllRound(match,run,bat_avg,bat_str,wicket,bowl_avg,bowl_str,eco);
                         }
                 }
                 cout<<"There may be chances that no players satisfy all your filters press 'y' to apply filter again \n\n";
                 cin>>chfilter;
         }while(chfilter=='y');
         cout<<"\n\nHope you have selected your players after filtering \n\n";
-        sold_index=0;
-        char chbuy,ch_continue;
+        char chbuy;
+        char ch_continue;
         int buy_id;
         int total;
+        vector<int>sold;
         do
         {
                 int random,bid,random_team;
@@ -471,11 +486,9 @@ void user::Login()
                         bid=1000000;
                         random=rand()%5;
                         random_team=rand()%8;
-                        //cout<<random<<"  "<<random_team<<"\n";
-                        if(check(buy_id)==1)
+                        if(check(sold,buy_id)==1)
                         {
-                                sold[sold_index]=buy_id;
-                                sold_index++;
+                                sold.push_back(buy_id);
                                 for(int v=0;v<random;v++)
                                 {
                                         while(random_team==choice-1)
@@ -498,15 +511,15 @@ void user::Login()
                                         {
                                                 if(yourteam.purse-total>0)
                                                 {
-                                                        if(yourteam.no_of_foreign_players<8||Ba[buy_id-1].foreign_player()==-1)
+                                                        if(yourteam.no_of_foreign_players<8||Ba[buy_id-1].foreign_player_of_bat()==-1)
                                                         {
                                                                 cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Ba[buy_id-1].base()+bid;
+                                                                total=Ba[buy_id-1].base_of_bat()+bid;
                                                                 cout<<"base price + bid amount is "<<total<<"\n\n";
                                                                 yourteam.purse-=total;
                                                                 yourteam.no_of_batsmans+=1;
                                                                 yourteam.no_of_players+=1;
-                                                                if(Ba[buy_id-1].foreign_player()==1)
+                                                                if(Ba[buy_id-1].foreign_player_of_bat()==1)
                                                                 {
                                                                         yourteam.no_of_foreign_players+=1;
                                                                 }
@@ -539,11 +552,9 @@ void user::Login()
                         bid=1000000;
                         random=rand()%5;
                         random_team=rand()%8;
-                        //cout<<random<<"  "<<random_team<<"\n";
-                        if(check(buy_id)==1)
+                        if(check(sold,buy_id)==1)
                         {
-                                sold[sold_index]=buy_id;
-                                sold_index++;
+                                sold.push_back(buy_id);
                                 for(int v=0;v<random;v++)
                                 {
                                         while(random_team==choice-1)
@@ -566,15 +577,15 @@ void user::Login()
                                         {
                                                 if(yourteam.purse-total>0)
                                                 {
-                                                        if(yourteam.no_of_foreign_players<8||Bo[buy_id-16].foreign_player()==-1)
+                                                        if(yourteam.no_of_foreign_players<8||Bo[buy_id-16].foreign_player_of_bowl()==-1)
                                                         {
                                                                 cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Bo[buy_id-16].base()+bid;
+                                                                total=Bo[buy_id-16].base_of_bowl()+bid;
                                                                 cout<<"base price + bid amount is "<<total<<"\n\n";
                                                                 yourteam.purse-=total;
                                                                 yourteam.no_of_bowlers+=1;
                                                                 yourteam.no_of_players+=1;
-                                                                if(Bo[buy_id-16].foreign_player()==1)
+                                                                if(Bo[buy_id-16].foreign_player_of_bowl()==1)
                                                                 {
                                                                         yourteam.no_of_foreign_players+=1;
                                                                 }
@@ -607,11 +618,9 @@ void user::Login()
                         bid=1000000;
                         random=rand()%5;
                         random_team=rand()%8;
-                        //cout<<random<<"  "<<random_team<<"\n";
-                        if(check(buy_id)==1)
+                        if(check(sold,buy_id)==1)
                         {
-                                sold[sold_index]=buy_id;
-                                sold_index++;
+                                sold.push_back(buy_id);
                                 for(int v=0;v<random;v++)
                                 {
                                         while(random_team==choice-1)
@@ -634,15 +643,15 @@ void user::Login()
                                         {
                                                 if(yourteam.purse-total>0)
                                                 {
-                                                        if(yourteam.no_of_foreign_players<8||Al[buy_id-26].Ar_foreign_player()==-1)
+                                                        if(yourteam.no_of_foreign_players<8||Al[buy_id-26].foreign_player_AllRound()==-1)
                                                         {
                                                                 cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Al[buy_id-26].Ar_base()+bid;
+                                                                total=Al[buy_id-26].base_of_AllRound()+bid;
                                                                 cout<<"base price + bid amount is "<<total<<"\n\n";
                                                                 yourteam.purse-=total;
                                                                 yourteam.no_of_All_rounders+=1;
                                                                 yourteam.no_of_players+=1;
-                                                                if(Al[buy_id-26].foreign_player()==1)
+                                                                if(Al[buy_id-26].foreign_player_AllRound()==1)
                                                                 {
                                                                         yourteam.no_of_foreign_players+=1;
                                                                 }
