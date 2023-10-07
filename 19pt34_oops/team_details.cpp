@@ -1,6 +1,7 @@
 #include <iostream>
-using namespace std;
 #include"team_details.h"
+using namespace std;
+
 details::details()
 {
         no_of_players=0;
