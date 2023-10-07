@@ -18,10 +18,10 @@ protected:
         int _4_wicket_haul=0;
         bowling_figures best;
 public:
-        virtual void setData() override;
-        virtual void printData() override;
-        void retrieveData(string,int,int,int,float,float,float,int,int,int,int,string,string,string,string,string,string,int) const;
-        void filterData(int,float,float,float) const;
-        int base() const;
-        int foreign_player() const;
+        void setBowler();
+        void printBowler() const;
+        void retrieveBowler(std::string,int,int,int,float,float,float,int,int,int,int,std::string,std::string,std::string,std::string,std::string,std::string,int);
+        void filterBowler(int,float,float,float) const;
+        int base_of_bowl() const;
+        int foreign_player_of_bowl() const;
 };
