@@ -2,11 +2,9 @@
 #include "player.h"
 player::player()
 {
-        player_id=0;
         strcpy(name,"name");
-        matches=0;
-        c=new country;
-        s=new style;
+        c = std::make_unique<country>();
+        s = std::make_unique<style>();
 }
 void player::setData()
 {
