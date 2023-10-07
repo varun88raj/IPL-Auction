@@ -1,13 +1,6 @@
 #include "batsman.h"
-batsman::batsman()
-{
-        runs=0;
-        batting_average=0;
-        batting_strike_rate=0;
-        _50s=0;
-        _100s=0;
-        best_score=0;
-}
+batsman::batsman():runs(0),batting_average(0),batting_strike_rate(0),_50s(0),_100s(0),best_score(0){}
+
 void batsman::setData()
 {
         player::setData();
