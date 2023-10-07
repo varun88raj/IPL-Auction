@@ -3,10 +3,10 @@
 class allrounder:public batsman,public bowler
 {
 public:
-        void setData() override;
-        void printData() override;
-        void Ar_retrieveData(string,int,int,int,float,float,int,int,int,int,float,float,float,int,int,int,int,string,string,string,string,string,string,int) const;
-        void Ar_filterData(int,int,float,float,int,float,float,float) const;
-        int Ar_base() const;
-        int Ar_foreign_player() const;
+        void setAllRound();
+        void printAllRound()const;
+        void retrieveAllRound(std::string,int,int,int,float,float,int,int,int,int,float,float,float,int,int,int,int,std::string,std::string,std::string,std::string,std::string,std::string,int);
+        void filterAllRound(int,int,float,float,int,float,float,float) const;
+        int base_of_AllRound() const;
+        int foreign_player_AllRound() const;
 };
