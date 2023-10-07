@@ -6,6 +6,7 @@
 #include "user.h"
 #include <fstream>
 #include <vector>
+#include <array>
 #include "allrounder.h"
 using namespace std;
 
@@ -32,9 +33,12 @@ int check(vector<int>sold,int iD)
 }
 float myatof(char temp[20])
 {
-        float res1=0,res2=0,result;
+        float res1=0;
+        float res2=0;
+        float result;
         int j=1;
-        int r,i;
+        int r;
+        int i;
         for(i=strlen(temp)-1;temp[i]!='.';i--)
         {
               r=int(temp[i]-48);
@@ -174,7 +178,7 @@ void user::Login()
                 }
         }
         yourteam.display();
-        string teams[8]={"MI","RCB","KKR","CSK","KXIP","DC","SRH","RR"};
+        array<std::string, 8> teams = {"MI", "RCB", "KKR", "CSK", "KXIP", "DC", "SRH", "RR"};
         string nam;
         string coun;
         string typ;
@@ -199,9 +203,9 @@ void user::Login()
         float bowl_str;
         float eco;
         int base;
-        batsman Ba[15];
-        bowler Bo[10];
-        allrounder Al[8];
+        array<batsman, 15> Ba;
+        array<bowler, 15> Bo;
+        array<allrounder, 15> Al;
         cout<<"There are 15 available batsman 10 bowlers 8 all-rounders\n";
         ifstream file1;
         file1.open("batsman_list.txt",ios::in);
@@ -476,7 +480,9 @@ void user::Login()
         vector<int>sold;
         do
         {
-                int random,bid,random_team;
+                int random;
+                int bid;
+                int random_team;
                 total=0;
                 cout<<"Enter the player id you want to buy ";
                 cin>>buy_id;
