@@ -18,8 +18,8 @@ private:
         int _4_wicket_haul=0;
         bowling_figures best;
 public:
-        void setData();
-        void printData();
+        void setData() override;
+        void printData() override;
         virtual void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
         void filterData(int,float,float,float);
         int base();
