@@ -1,7 +1,6 @@
 #include "player.h"
 player::player()
 {
-        name="name";
         c = std::make_unique<country>();
         s = std::make_unique<style>();
 }
