@@ -51,7 +51,7 @@ void bowler::setData()
         }while(best.wickets_taken>10);
         fflush(stdin);
 }
-void bowler::printData()
+void bowler::printData() const
 {
         cout<<setw(4)<<player_id<<setw(20)<<name<<setw(4)<<matches<<setw(6)<<wickets<<setw(8)<<economy<<setw(8)<<bowling_average<<setw(8)<<bowling_strike_rate<<setw(4)<<_4_wicket_haul<<setw(4)<<_5_wicket_haul<<setw(6)<<best.runs_given<<"/"<<best.wickets_taken<<setw(15)<<s->position<<setw(15)<<s->type<<setw(15)<<s->bowl_type<<setw(15)<<s->batting_hand<<setw(15)<<s->batting_hand<<setw(15)<<c->Country<<setw(15)<<c->base_price<<"\n";
 }
@@ -76,18 +76,18 @@ void bowler::retrieveData(char n[20],int m,int p,int w,float bowavg,float bowstr
         strcpy(s->position,pos);
         c->base_price=base;
 }
-void bowler::filterData(int w,float bowavg,float bowstr,float eco)
+void bowler::filterData(int w,float bowavg,float bowstr,float eco) const
 {
         if((wickets>w)&&((bowling_average<bowavg)||(bowavg==0))&&((bowling_strike_rate<bowstr)||(bowstr==0))&&((economy<eco)||(eco==0)))
         {
                 printData();
         }
 }
-int bowler::base()
+int bowler::base() const
 {
         return c->base_price;
 }
-int bowler::foreign_player()
+int bowler::foreign_player() const
 {
         if(strcmp(c->Country,"Foreigner")==0)
         {
