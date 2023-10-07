@@ -5,7 +5,7 @@ class batsman:virtual public player
 {
 private:
         int runs;
-        float batting_average;
+        float batting_average=0.0;
         float batting_strike_rate;
         int _50s;
         int _100s;
