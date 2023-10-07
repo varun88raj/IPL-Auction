@@ -39,9 +39,9 @@ void batsman::printData() const
 {
         cout<<setw(4)<<player_id<<setw(20)<<name<<setw(4)<<matches<<setw(8)<<runs<<setw(8)<<batting_average<<setw(8)<<batting_strike_rate<<setw(6)<<_50s<<setw(6)<<_100s<<setw(6)<<best_score<<setw(15)<<s->position<<setw(15)<<s->type<<setw(15)<<s->bowl_type<<setw(15)<<s->batting_hand<<setw(15)<<s->batting_hand<<setw(15)<<c->Country<<setw(15)<<c->base_price<<"\n";
 }
-void batsman::retrieveData(char n[20],int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,char pos[20],char typ[20],char bah[20],char boh[20],char bowtyp[20],char co[20],int base)
+void batsman::retrieveData(string n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,string pos,string typ,string bah,string boh,string bowtyp,string co,int base) const
 {
-        strcpy(name,n);
+        name=n;
         matches=m;
         player_id=p;
         runs=r;
@@ -50,12 +50,12 @@ void batsman::retrieveData(char n[20],int m,int p,int r,float batavg,float batst
         _50s=fif;
         _100s=hun;
         best_score=b;
-        strcpy(c->Country,co);
-        strcpy(s->type,typ);
-        strcpy(s->bowl_type,bowtyp);
-        strcpy(s->bowling_hand,boh);
-        strcpy(s->batting_hand,bah);
-        strcpy(s->position,pos);
+        c->Country=co;
+        s->type=typ;
+        s->bowl_type=bowtyp;
+        s->bowling_hand=boh;
+        s->batting_hand=bah;
+        s->position=pos;
         c->base_price=base;
 }
 void batsman::filterData(int m,int r,float batavg,float batstr) const
@@ -71,7 +71,7 @@ int batsman::base() const
 }
 int batsman::foreign_player() const
 {
-        if(strcmp(c->Country,"Foreigner")==0)
+        if((c->Country=="Foreigner"))
         {
                 return 1;
         }
