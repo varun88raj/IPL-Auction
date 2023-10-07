@@ -1,6 +1,6 @@
 class details
 {
-public:
+private:
         int no_of_players;
         int no_of_foreign_players;
         long long int purse;
