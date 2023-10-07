@@ -1,6 +1,6 @@
 #include "batsman.h"
-
-void batsman::setData()
+using namespace std;
+void batsman::setBatsman()
 {
         player::setData();
         do
@@ -35,11 +35,24 @@ void batsman::setData()
         }while(best_score<0);
         fflush(stdin);
 }
-void batsman::printData() const
+void batsman::printBatsman() const
 {
-        cout<<setw(4)<<player_id<<setw(20)<<name<<setw(4)<<matches<<setw(8)<<runs<<setw(8)<<batting_average<<setw(8)<<batting_strike_rate<<setw(6)<<_50s<<setw(6)<<_100s<<setw(6)<<best_score<<setw(15)<<s->position<<setw(15)<<s->type<<setw(15)<<s->bowl_type<<setw(15)<<s->batting_hand<<setw(15)<<s->batting_hand<<setw(15)<<c->Country<<setw(15)<<c->base_price<<"\n";
+        cout<<player_id<<"\n";
+        cout<<name<<"\n";
+        cout<<matches<<"\n";
+        cout<<runs<<"\n";
+        cout<<batting_average<<"\n";
+        cout<<batting_strike_rate<<"\n";
+        cout<<_50s<<"\n";
+        cout<<_100s<<"\n";
+        cout<<best_score;
+        cout<<s->position<<"\n";
+        cout<<s->type<<"\n";
+        cout<<s->batting_hand<<"\n";
+        cout<<c->Country<<"\n";
+        cout<<c->base_price<<"\n";
 }
-void batsman::retrieveData(string n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,string pos,string typ,string bah,string boh,string bowtyp,string co,int base) const
+void batsman::retrieveBatsman(string n,int m,int p,int r,float batavg,float batstr,int fif,int hun,int b,string pos,string typ,string bah,string boh,string bowtyp,string co,int base)
 {
         name=n;
         matches=m;
@@ -58,18 +71,18 @@ void batsman::retrieveData(string n,int m,int p,int r,float batavg,float batstr,
         s->position=pos;
         c->base_price=base;
 }
-void batsman::filterData(int m,int r,float batavg,float batstr) const
+void batsman::filterBatsman(int m,int r,float batavg,float batstr) const
 {
         if((matches>m)&&(runs>r)&&(batting_average>batavg)&&(batting_strike_rate>batstr))
         {
                 printData();
         }
 }
-int batsman::base() const
+int batsman::base_of_bat() const
 {
         return c->base_price;
 }
-int batsman::foreign_player() const
+int batsman::foreign_player_of_bat() const
 {
         if(c->Country=="Foreigner")
         {
