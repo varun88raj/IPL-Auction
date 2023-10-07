@@ -11,7 +11,6 @@ private:
         int _100s;
         int best_score;
 public:
-        //friend class filter;
         batsman();
         void setData();
         void printData();
