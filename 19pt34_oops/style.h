@@ -15,10 +15,10 @@ public:
         string bowl_type;
         style();
         void SetData();
-        char getPosition();
-        char getType();
-        char getBatting_hand();
-        char getBowling_hand();
-        char getBowling_type();
+        char getPosition() const;
+        char getType() const;
+        char getBatting_hand() const;
+        char getBowling_hand() const;
+        char getBowling_type() const;
 };
 #endif
