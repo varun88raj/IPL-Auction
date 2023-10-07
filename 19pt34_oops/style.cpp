@@ -1,15 +1,12 @@
-#include <iostream>
-#include <strings.h>
 #include "style.h"
-using namespace std;
 
 style::style()
 {
-        strcpy(position,"position");
-        strcpy(type,"type");
-        strcpy(batting_hand,"bat");
-        strcpy(bowling_hand,"bowl");
-        strcpy(bowl_type,"bowl_type");
+        position="position";
+        type="type";
+        batting_hand="bat";
+        bowling_hand="bowl";
+        bowl_type="bowl_type";
 }
 void style::SetData()
 {
@@ -17,27 +14,27 @@ void style::SetData()
         {
                 cout<<"Enter the batting position ";
                 cin>>position;
-        }while((strcmp(position,"opener")!=0)&&(strcmp(position,"middle-order")!=0)&&(strcmp(position,"finisher")!=0)&&(strcmp(position,"tailender")!=0));
+        }while((position=="opener")&&(position=="middle-order")&&(position=="finisher")&&(position=="tailender"));
         do
         {
                 cout<<"Enter the batting type ";
                 cin>>type;
-        }while((strcmp(type,"aggressive")!=0)&&(strcmp(type,"balanced")!=0)&&(strcmp(type,"defensive")!=0));
+        }while((type=="aggressive")&&(type=="balanced")&&(type=="defensive"));
         do
         {
                 cout<<"Enter the batting hand ";
                 cin>>batting_hand;
-        }while((strcmp(batting_hand,"right")!=0)&&(strcmp(batting_hand,"left")!=0));
+        }while((batting_hand=="right")&&(batting_hand=="left"));
         do
         {
                 cout<<"Enter the bowling hand ";
                 cin>>bowling_hand;
-        }while((strcmp(bowling_hand,"right")!=0)&&(strcmp(bowling_hand,"left")!=0));
+        }while((bowling_hand=="right")&&(bowling_hand=="left"));
         do
         {
                 cout<<"Enter the bowling type ";
                 cin>>bowl_type;
-        }while((strcmp(bowl_type,"Fast")!=0)&&(strcmp(bowl_type,"off-spin")!=0)&&(strcmp(bowl_type,"leg-spin")!=0));
+        }while((bowl_type=="Fast")&&(bowl_type=="off-spin")&&(bowl_type=="leg-spin"));
 }
 char style::getPosition() const
 {
