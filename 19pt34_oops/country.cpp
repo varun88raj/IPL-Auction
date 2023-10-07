@@ -1,13 +1,11 @@
 #include <iostream>
-using namespace std;
 #include <strings.h>
 #include "country.h"
+using namespace std;
+
 country::country()
 {
         strcpy(Country,"Country");
-        base_price=0;
-        //cout<<sizeof(country)<<"\n";
-        //SetData();
 }
 void country::SetData()
 {
