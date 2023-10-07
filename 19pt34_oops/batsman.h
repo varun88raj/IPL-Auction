@@ -11,7 +11,6 @@ private:
         int _100s=0;
         int best_score=0;
 public:
-        batsman();
         void setData();
         void printData();
         virtual void retrieveData(char*,int,int,int,float,float,int,int,int,char*,char*,char*,char*,char*,char*,int);
