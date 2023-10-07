@@ -1,15 +1,5 @@
 #include "bowler.h"
-bowler::bowler()
-{
-        wickets=0;
-        bowling_average=0;
-        bowling_strike_rate=0;
-        economy=0;
-        _5_wicket_haul=0;
-        _4_wicket_haul=0;
-        best.runs_given=0;
-        best.wickets_taken=0;
-}
+
 void bowler::setData()
 {
         player::setData();
