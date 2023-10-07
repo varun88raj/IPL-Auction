@@ -21,7 +21,7 @@ public:
         bowler();
         void setData();
         void printData();
-        void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
+        virtual void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
         void filterData(int,float,float,float);
         int base();
         int foreign_player();
