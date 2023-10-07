@@ -1,4 +1,5 @@
 #include "player.h"
+using namespace std;
 player::player()
 {
         c = std::make_unique<country>();
