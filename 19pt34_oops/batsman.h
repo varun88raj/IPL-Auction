@@ -3,7 +3,7 @@
 #define bat_h
 class batsman:virtual public player
 {
-protected:
+private:
         int runs;
         float batting_average;
         float batting_strike_rate;
