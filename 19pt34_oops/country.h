@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <iomanip>
-using namespace std;
 #ifndef country_h
 #define country_h
 class country
