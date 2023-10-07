@@ -1,11 +1,8 @@
-#include <iostream>
-#include <strings.h>
 #include "country.h"
-using namespace std;
 
 country::country()
 {
-        strcpy(Country,"Country");
+        Country="Country";
 }
 void country::SetData()
 {
@@ -13,7 +10,7 @@ void country::SetData()
         {
                 cout<<"Enter Indian/foreigner ";
                 cin>>Country;
-        }while((strcmp(Country,"Indian")!=0)&&(strcmp(Country,"Foreigner")!=0));
+        }while((Country=="Indian")&&(Country=="Foreigner"));
         do
         {
                 cout<<"Enter the base price ";
