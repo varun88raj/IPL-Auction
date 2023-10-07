@@ -1,16 +1,15 @@
 #include <iostream>
-using namespace std;
 #include <strings.h>
 #include "style.h"
+using namespace std;
+
 style::style()
 {
-        //cout<<sizeof(style)<<"\n";
         strcpy(position,"position");
         strcpy(type,"type");
         strcpy(batting_hand,"bat");
         strcpy(bowling_hand,"bowl");
         strcpy(bowl_type,"bowl_type");
-        //SetData();
 }
 void style::SetData()
 {
