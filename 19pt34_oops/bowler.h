@@ -9,7 +9,7 @@ struct bowling_figures
 #endif
 class bowler:virtual public player
 {
-private:
+protected:
         int wickets=0;
         float bowling_average=0.0;
         float bowling_strike_rate=0.0;
@@ -18,10 +18,10 @@ private:
         int _4_wicket_haul=0;
         bowling_figures best;
 public:
-        void setData() override;
-        void printData() override;
-        void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
-        void filterData(int,float,float,float);
-        int base();
-        int foreign_player();
+        virtual void setData() override;
+        virtual void printData() override;
+        void retrieveData(string,int,int,int,float,float,float,int,int,int,int,string,string,string,string,string,string,int) const;
+        void filterData(int,float,float,float) const;
+        int base() const;
+        int foreign_player() const;
 };
