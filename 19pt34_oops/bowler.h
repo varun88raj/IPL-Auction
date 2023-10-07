@@ -10,15 +10,14 @@ struct bowling_figures
 class bowler:virtual public player
 {
 private:
-        int wickets;
-        float bowling_average;
-        float bowling_strike_rate;
-        float economy;
-        int _5_wicket_haul;
-        int _4_wicket_haul;
+        int wickets=0;
+        float bowling_average=0.0;
+        float bowling_strike_rate=0.0;
+        float economy=0;
+        int _5_wicket_haul=0;
+        int _4_wicket_haul=0;
         bowling_figures best;
 public:
-        bowler();
         void setData();
         void printData();
         virtual void retrieveData(char*,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
