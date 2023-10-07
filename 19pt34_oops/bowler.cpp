@@ -60,7 +60,7 @@ void bowler::printBowler() const
         cout<<c->Country<<"\n";
         cout<<c->base_price<<"\n";
 }
-void bowler::retrieveBowler(string n,int m,int p,int w,float bowavg,float bowstr,float e,int _4,int _5,int br,int bw,string pos,string typ,string bah,string boh,string bowtyp,string co,int base)
+void bowler::retrieveBowler(string &n,int m,int p,int w,float bowavg,float bowstr,float e,int _4,int _5,int br,int bw,string &pos,string &typ,string &bah,string &boh,string &bowtyp,string &co,int base)
 {
         name=n;
         matches=m;
@@ -94,7 +94,7 @@ int bowler::base_of_bowl() const
 }
 int bowler::foreign_player_of_bowl() const
 {
-        if(c->Country=="Foreigner")
+        if(c->Country,"Foreigner")
         {
                 return 1;
         }
