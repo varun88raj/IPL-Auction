@@ -7,9 +7,11 @@ using namespace std;
 #define country_h
 class country
 {
-public:
+private:
         char Country[20];
         long int base_price;
+        
+public:
         country();
         char getCountry();
         long int getPrice();
