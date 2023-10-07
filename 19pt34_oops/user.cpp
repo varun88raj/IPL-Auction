@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 #include <strings.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +6,7 @@ using namespace std;
 #include "user.h"
 #include <fstream>
 #include "allrounder.h"
+using namespace std;
 int sold[33];
 int sold_index;
 int check(int iD)
@@ -91,7 +91,6 @@ void user::Login()
         Rajasthan_Royals.setdetails(14,4,289000000,4,6,2,2);
         details yourteam;
         cout<<"/*************** Welcome to real cricket ipl auction game ***************/";
-        //PlaySound(TEXT("ipl-9284.wav"),NULL,SND_SYNC);
         cout<<"/***************           Rules of the game              ***************\n";
         cout<<"You can choose any of the eight teams.\nGenerally the maximum number of players in a team is 25.";
         cout<<"\nAnd a team can have maximum of 8 foreign players.\nThis depends upon the team you choose.\n";
@@ -297,7 +296,6 @@ void user::Login()
         if(!file3)
         {
                 cout<<"Error in creating file.."<<endl;
-                //return 0;
         }
         char ch;
         while(!file3.eof())
