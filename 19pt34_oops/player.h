@@ -13,7 +13,7 @@ public:
         country*c;
         style*s;
         player();
-        void setData();
-        void printData();
+        virtual void setData();
+        virtual void printData();
 };
 #endif
