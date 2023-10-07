@@ -12,10 +12,10 @@ private:
         int best_score;
 public:
         batsman();
-        void setData();
-        void printData();
-        void retrieveData(char*,int,int,int,float,float,int,int,int,char*,char*,char*,char*,char*,char*,int);
-        void filterData(int,int,float,float);
+        virtual void setData();
+        virtual void printData();
+        virtual void retrieveData(char*,int,int,int,float,float,int,int,int,char*,char*,char*,char*,char*,char*,int);
+        virtual void filterData(int,int,float,float);
         int base();
         int foreign_player();
 };
