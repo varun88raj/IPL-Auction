@@ -11,8 +11,8 @@ private:
         int _100s=0;
         int best_score=0;
 public:
-        void setData();
-        void printData();
+        void setData() override;
+        void printData() override;
         virtual void retrieveData(char*,int,int,int,float,float,int,int,int,char*,char*,char*,char*,char*,char*,int);
         void filterData(int,int,float,float);
         int base();
