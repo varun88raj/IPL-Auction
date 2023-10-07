@@ -5,8 +5,8 @@ class allrounder:public batsman,public bowler
 public:
         void setData() override;
         void printData() override;
-        void Ar_retrieveData(char*,int,int,int,float,float,int,int,int,int,float,float,float,int,int,int,int,char*,char*,char*,char*,char*,char*,int);
-        void Ar_filterData(int,int,float,float,int,float,float,float);
+        void Ar_retrieveData(string,int,int,int,float,float,int,int,int,int,float,float,float,int,int,int,int,string,string,string,string,string,string,int) const;
+        void Ar_filterData(int,int,float,float,int,float,float,float) const;
         int Ar_base();
         int Ar_foreign_player();
 };
