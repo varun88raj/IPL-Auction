@@ -5,7 +5,7 @@
 //class filter;
 class player
 {
-protected:
+private:
         int player_id;
         char name[20];
         int matches;
