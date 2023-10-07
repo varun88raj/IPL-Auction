@@ -1,9 +1,5 @@
 #include "country.h"
 
-country::country()
-{
-        Country="Country";
-}
 void country::SetData()
 {
         do
