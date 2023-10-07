@@ -9,6 +9,6 @@ public:
         int no_of_All_rounders=0;
         int no_of_wicketkeepers=0;
         setdetails(int,int,long int,int,int,int,int);
-        void display();
+        void display() const;
 };
 
