@@ -20,7 +20,7 @@ protected:
 public:
         void setBowler();
         void printBowler() const;
-        void retrieveBowler(const std::string&,int,int,int,float,float,float,int,int,int,int,const std::string&,const std::string&,const std::string&,const std::string&,const std::string&,const std::string&,int);
+        void retrieveBowler(std::string_view,int,int,int,float,float,float,int,int,int,int,std::string_view,std::string_view,std::string_view,std::string_view,std::string_view,std::string_view,int);
         void filterBowler(int,float,float,float) const;
         int base_of_bowl() const;
         int foreign_player_of_bowl() const;
