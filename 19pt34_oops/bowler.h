@@ -9,7 +9,7 @@ struct bowling_figures
 #endif
 class bowler:virtual public player
 {
-protected:
+private:
         int wickets;
         float bowling_average;
         float bowling_strike_rate;
