@@ -40,23 +40,23 @@ void style::SetData()
                 cin>>bowl_type;
         }while((strcmp(bowl_type,"Fast")!=0)&&(strcmp(bowl_type,"off-spin")!=0)&&(strcmp(bowl_type,"leg-spin")!=0));
 }
-char style::getPosition()
+char style::getPosition() const
 {
         return position[0];
 }
-char style::getType()
+char style::getType() const
 {
         return type[0];
 }
-char style::getBatting_hand()
+char style::getBatting_hand() const
 {
         return batting_hand[0];
 }
-char style::getBowling_hand()
+char style::getBowling_hand() const
 {
         return bowling_hand[0];
 }
-char style::getBowling_type()
+char style::getBowling_type() const
 {
         return bowl_type[0];
 }
