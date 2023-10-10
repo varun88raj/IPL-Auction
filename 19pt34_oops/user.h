@@ -4,5 +4,5 @@ class user
 {
 public:
         std::string username;
-        void Login();
+        void Login() const;
 };
