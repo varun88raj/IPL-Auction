@@ -2,11 +2,12 @@
 #include <strings.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <ctime>
 #include "user.h"
 #include <fstream>
 #include <vector>
 #include <array>
+#include <random>
 #include "allrounder.h"
 using namespace std;
 
@@ -227,7 +228,7 @@ void filterBowler(array<bowler, 10>& Bo,array<allrounder, 8>& Al,int r,float avg
     float bowl_str;
     float eco;
     cout<<"Enter your conditions for runs,batting average and strike rate. If no filter is needed enter 0\n";
-    cout<<"Wickets\nBowling average\nBowling strike rate\nEconomy";
+    cout<<"Wickets\nBowling average\nBowling strike rate\nEconomy\n";
     cin>>wicket>>bowl_avg>>bowl_str>>eco;
     if(opinion==2)
     {
@@ -278,7 +279,7 @@ void filter(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& A
                 int match;
                 cout<<"Enter the list of players you want filter out and see \n(1).Batsman (2).Bowler (3).All-rounder \n";
                 cin>>opinion;
-                cout<<"Enter your conditions for matches if not needed input 0";
+                cout<<"Enter your conditions for matches if not needed input 0\n";
                 cin>>match;
                 if(opinion==1||opinion==3)
                 {
@@ -292,6 +293,141 @@ void filter(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& A
                 cin>>chfilter;
         }while(chfilter=='y');
 }
+
+int OtherTeamsBid(array<string, 8>& teams,int choice,int buy_id)
+{
+        long int bid=1000000;
+        random_device rd;
+        uniform_int_distribution<int> teamDistribution(0, 7);
+        uniform_int_distribution<int> randomDistribution(0, 4);
+        int random = randomDistribution(rd);
+        int random_team = teamDistribution(rd);
+        cout<<random<<"\n";
+        cout<<random_team<<"\n";
+        char ch_continue;
+        for(int v=0;v<random;v++)
+        {
+                while(random_team==choice-1)
+                {
+                        random_team=rand()%8;
+                }
+                cout<<teams[random_team]<<" bids player "<<buy_id<<" for "<<bid<<"\n";
+                cout<<"Wanna Continue ";
+                cin>>ch_continue;
+                bid+=1000000;
+                if(ch_continue!='y')
+                {
+                        return 0;
+                }
+        }
+        return bid;
+}
+
+long int checkPriceSlot(player* P,int flag,long int bid,details& yourteam)
+{
+        if((yourteam.no_of_players<25) && (yourteam.no_of_foreign_players<8||P->is_foreign_player()==-1))
+        {
+                long int total=P->get_base_price()+bid;
+                if(P->is_foreign_player()==1)
+                {
+                        yourteam.no_of_foreign_players+=1;
+                }
+                if(flag==1)
+                {
+                        yourteam.no_of_batsmans+=1;
+                }
+                else if(flag==2)
+                {
+                        yourteam.no_of_bowlers+=1;
+                }
+                else
+                {
+                        yourteam.no_of_All_rounders+=1;
+                }
+                return total;
+        }
+        return 0;
+}
+
+
+void checkBuy(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& Al,details& yourteam,int flag,int buy_id,long int bid)
+{
+        player* P;
+        if(flag==1)
+        {
+                P = &Ba[buy_id-1];
+        }
+        else if(flag==2)
+        {
+                P = &Bo[buy_id-16];
+        }
+        else
+        {
+                P = &Al[buy_id-26];
+        }
+        long int total = checkPriceSlot(P,flag,bid,yourteam);
+        if(total>0)
+        {
+                cout<<"base price + bid amount is "<<total<<"\n\n";
+                cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
+                yourteam.no_of_players+=1;
+                yourteam.purse-=total;
+        }
+        else
+        {
+                cout<<"Sorry You dont have enough purse or your slots are full\n";
+        }
+}
+
+int getFlag(int buy_id)
+{
+        int flag;
+        if(buy_id>=1 && buy_id<=15)
+        {
+                flag=1;
+        }
+        else if(buy_id>=16 && buy_id<=25)
+        {
+                flag=2;
+        }
+        else if(buy_id>=26 && buy_id<=33)
+        {
+                flag=3;
+        }
+        return flag;
+}
+
+void BuyPlayers(array<string, 8>& teams,array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& Al,details& yourteam,int choice)
+{
+        vector<int>sold;
+        int buy_id;
+        char chbuy;
+        do
+        {
+                long int bid=0;
+                cout<<"Enter the player id you want to buy ";
+                cin>>buy_id;
+                int flag = getFlag(buy_id);
+                if(check(sold,buy_id)==1)
+                {
+                        sold.push_back(buy_id);
+                        bid = OtherTeamsBid(teams,choice,buy_id);
+                        if ( bid > 0)
+                        {
+                                checkBuy(Ba,Bo,Al,yourteam,flag,buy_id,bid);
+                        }
+                        else
+                        {
+                                cout<<"You gave up Player bought by other team \n\n";
+                        }
+                }
+                yourteam.display();
+                cout<<"Continue buying players\n";
+                cin>>chbuy;
+        }while(chbuy=='y');
+}
+
+
 void user::Login() const
 {
         details yourteam("name",0,0,0,0,0,0,0);
@@ -313,224 +449,5 @@ void user::Login() const
         printDetails(Ba,Bo,Al);
         filter(Ba,Bo,Al);
         cout<<"\n\nHope you have selected your players after filtering \n\n";
-        char chbuy;
-        char ch_continue;
-        int buy_id;
-        int total;
-        vector<int>sold;
-        do
-        {
-                int random;
-                int bid;
-                int random_team;
-                total=0;
-                cout<<"Enter the player id you want to buy ";
-                cin>>buy_id;
-                if(buy_id>=1&&buy_id<=15)
-                {
-                        int flag2=0;
-                        bid=1000000;
-                        random=rand()%5;
-                        random_team=rand()%8;
-                        if(check(sold,buy_id)==1)
-                        {
-                                sold.push_back(buy_id);
-                                for(int v=0;v<random;v++)
-                                {
-                                        while(random_team==choice-1)
-                                        {
-                                                random_team=rand()%8;
-                                        }
-                                        cout<<teams[random_team]<<" bids player "<<buy_id<<" for "<<bid<<"\n";
-                                        cout<<"Wanna Continue ";
-                                        cin>>ch_continue;
-                                        bid+=1000000;
-                                        if(ch_continue!='y')
-                                        {
-                                                flag2=1;
-                                                break;
-                                        }
-                                }
-                                if(flag2!=1)
-                                {
-                                        if(yourteam.no_of_players<25)
-                                        {
-                                                if(yourteam.purse-total>0)
-                                                {
-                                                        if(yourteam.no_of_foreign_players<8||Ba[buy_id-1].foreign_player_of_bat()==-1)
-                                                        {
-                                                                cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Ba[buy_id-1].base_of_bat()+bid;
-                                                                cout<<"base price + bid amount is "<<total<<"\n\n";
-                                                                yourteam.purse-=total;
-                                                                yourteam.no_of_batsmans+=1;
-                                                                yourteam.no_of_players+=1;
-                                                                if(Ba[buy_id-1].foreign_player_of_bat()==1)
-                                                                {
-                                                                        yourteam.no_of_foreign_players+=1;
-                                                                }
-                                                        }
-                                                        else
-                                                        {
-                                                                cout<<"Sorry Foreign slot full\n\n ";
-                                                        }
-                                                }
-                                                else
-                                                {
-                                                        cout<<"Sorry not enough balance\n\n";
-                                                }
-                                        }
-                                        else
-                                        {
-                                                cout<<"Your slots is full \n\n";
-                                        }
-                                        yourteam.display();
-                                }
-                        }
-                        else
-                        {
-                                cout<<"Sorry Player bought already \n\n";
-                        }
-                }
-                else if(buy_id>=16&&buy_id<=25)
-                {
-                        int flag2=0;
-                        bid=1000000;
-                        random=rand()%5;
-                        random_team=rand()%8;
-                        if(check(sold,buy_id)==1)
-                        {
-                                sold.push_back(buy_id);
-                                for(int v=0;v<random;v++)
-                                {
-                                        while(random_team==choice-1)
-                                        {
-                                                random_team=rand()%8;
-                                        }
-                                        cout<<teams[random_team]<<" bids player "<<buy_id<<" for "<<bid<<"\n\n";
-                                        cout<<"Wanna Continue ";
-                                        cin>>ch_continue;
-                                        bid+=1000000;
-                                        if(ch_continue!='y')
-                                        {
-                                                flag2=1;
-                                                break;
-                                        }
-                                }
-                                if(flag2!=1)
-                                {
-                                        if(yourteam.no_of_players<25)
-                                        {
-                                                if(yourteam.purse-total>0)
-                                                {
-                                                        if(yourteam.no_of_foreign_players<8||Bo[buy_id-16].foreign_player_of_bowl()==-1)
-                                                        {
-                                                                cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Bo[buy_id-16].base_of_bowl()+bid;
-                                                                cout<<"base price + bid amount is "<<total<<"\n\n";
-                                                                yourteam.purse-=total;
-                                                                yourteam.no_of_bowlers+=1;
-                                                                yourteam.no_of_players+=1;
-                                                                if(Bo[buy_id-16].foreign_player_of_bowl()==1)
-                                                                {
-                                                                        yourteam.no_of_foreign_players+=1;
-                                                                }
-                                                        }
-                                                        else
-                                                        {
-                                                                cout<<"Sorry foreign slot full \n\n";
-                                                        }
-                                                }
-                                                else
-                                                {
-                                                        cout<<"Sorry not enough balance \n\n";
-                                                }
-                                        }
-                                        else
-                                        {
-                                                cout<<"Your slots are full \n\n";
-                                        }
-                                        yourteam.display();
-                                }
-                        }
-                        else
-                        {
-                                cout<<"Sorry Player bought already \n";
-                        }
-                }
-                else if(buy_id>=26&&buy_id<=33)
-                {
-                        int flag2=0;
-                        bid=1000000;
-                        random=rand()%5;
-                        random_team=rand()%8;
-                        if(check(sold,buy_id)==1)
-                        {
-                                sold.push_back(buy_id);
-                                for(int v=0;v<random;v++)
-                                {
-                                        while(random_team==choice-1)
-                                        {
-                                                random_team=rand()%8;
-                                        }
-                                        cout<<teams[random_team]<<" bids player "<<buy_id<<" for "<<bid<<"\n\n";
-                                        cout<<"Wanna Continue ";
-                                        cin>>ch_continue;
-                                        bid+=1000000;
-                                        if(ch_continue!='y')
-                                        {
-                                                flag2=1;
-                                                break;
-                                        }
-                                }
-                                if(flag2!=1)
-                                {
-                                        if(yourteam.no_of_players<25)
-                                        {
-                                                if(yourteam.purse-total>0)
-                                                {
-                                                        if(yourteam.no_of_foreign_players<8||Al[buy_id-26].foreign_player_AllRound()==-1)
-                                                        {
-                                                                cout<<"Congrats you have bought player no "<<buy_id<<"\n\n";
-                                                                total=Al[buy_id-26].base_of_AllRound()+bid;
-                                                                cout<<"base price + bid amount is "<<total<<"\n\n";
-                                                                yourteam.purse-=total;
-                                                                yourteam.no_of_All_rounders+=1;
-                                                                yourteam.no_of_players+=1;
-                                                                if(Al[buy_id-26].foreign_player_AllRound()==1)
-                                                                {
-                                                                        yourteam.no_of_foreign_players+=1;
-                                                                }
-                                                        }
-                                                        else
-                                                        {
-                                                                cout<<"Sorry foreign slot full \n\n";
-
-                                                        }
-                                                }
-                                                else
-                                                {
-                                                        cout<<"Sorry not enough balance \n\n";
-                                                }
-                                        }
-                                        else
-                                        {
-                                                cout<<"Your slots is full \n\n";
-                                        }
-                                        yourteam.display();
-                                }
-                        }
-                        else
-                        {
-                                cout<<"Sorry Player bought already \n";
-                        }
-                }
-                else
-                {
-                        cout<<"Invalid Choice \n";
-                        chbuy='y';
-                }
-                cout<<"Continue buying players \n";
-                cin>>chbuy;
-        }while(chbuy=='y');
+        BuyPlayers(teams,Ba,Bo,Al,yourteam,choice);
 }
