@@ -45,7 +45,7 @@ void batsman::printBatsman() const
         cout<<batting_strike_rate<<"\n";
         cout<<_50s<<"\n";
         cout<<_100s<<"\n";
-        cout<<best_score;
+        cout<<best_score<<"\n";
         cout<<s->position<<"\n";
         cout<<s->type<<"\n";
         cout<<s->batting_hand<<"\n";
@@ -75,7 +75,7 @@ void batsman::filterBatsman(int m,int r,float batavg,float batstr) const
 {
         if((matches>m)&&(runs>r)&&(batting_average>batavg)&&(batting_strike_rate>batstr))
         {
-                printData();
+                printBatsman();
         }
 }
 int batsman::base_of_bat() const
