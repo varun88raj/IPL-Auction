@@ -298,8 +298,8 @@ int OtherTeamsBid(array<string, 8>& teams,int choice,int buy_id)
 {
         long int bid=1000000;
         random_device rd;
-        uniform_int_distribution<int> teamDistribution(0, 7);
-        uniform_int_distribution<int> randomDistribution(0, 4);
+        uniform_int_distribution teamDistribution(0, 7);
+        uniform_int_distribution randomDistribution(0, 4);
         int random = randomDistribution(rd);
         int random_team = teamDistribution(rd);
         cout<<random<<"\n";
