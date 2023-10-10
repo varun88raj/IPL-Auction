@@ -85,7 +85,7 @@ void bowler::filterBowler(int w,float bowavg,float bowstr,float eco) const
 {
         if((wickets>w)&&((bowling_average<bowavg)||(bowavg==0))&&((bowling_strike_rate<bowstr)||(bowstr==0))&&((economy<eco)||(eco==0)))
         {
-                printData();
+                printBowler();
         }
 }
 int bowler::base_of_bowl() const
