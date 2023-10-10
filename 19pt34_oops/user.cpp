@@ -309,7 +309,7 @@ int OtherTeamsBid(array<string, 8>& teams,int choice,int buy_id)
         {
                 while(random_team==choice-1)
                 {
-                        random_team=rand()%8;
+                        random_team=teamDistribution(rd);
                 }
                 cout<<teams[random_team]<<" bids player "<<buy_id<<" for "<<bid<<"\n";
                 cout<<"Wanna Continue ";
