@@ -168,11 +168,12 @@ void retrieveAlr(array<array<string, 24>, 15>& arr,array<allrounder, 8>& Al)
                         Al[j].retrieveAllRound(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
         }
 }
-void fileRead(string filename,array<array<string, 24>, 15>& arrPlayer,int Xmax,int Ymax)
+void fileRead(const string& filename,array<array<string, 24>, 15>& arrPlayer,int Xmax,int Ymax)
 {
         ifstream file1;
         file1.open(filename,ios::in);
-        int x=0,y=0;
+        int x=0;
+        int y=0;
         char ch1;
         arrPlayer[x][y]="";
         while(!file1.eof())
@@ -291,7 +292,7 @@ void filter(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& A
                 cin>>chfilter;
         }while(chfilter=='y');
 }
-void user::Login()
+void user::Login() const
 {
         details yourteam("name",0,0,0,0,0,0,0);
         int choice=instructions(yourteam);
