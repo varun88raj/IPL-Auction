@@ -22,7 +22,7 @@ void allrounder::printAllRound() const
         cout<<_4_wicket_haul<<"\n";
         cout<<_5_wicket_haul<<"\n";
         cout<<best.runs_given<<"/"<<best.wickets_taken<<"\n";
-        cout<<best_score;
+        cout<<best_score<<"\n";
         cout<<s->position<<"\n";
         cout<<s->type<<"\n";
         cout<<s->batting_hand<<"\n";
@@ -61,7 +61,7 @@ void allrounder::filterAllRound(int m,int r,float batavg,float batstr,int w,floa
 {
         if((matches>m)&&(runs>r)&&(batting_average>batavg)&&(batting_strike_rate>batstr)&&(wickets>w)&&((bowling_average<bowavg)||(bowavg==0))&&((bowling_strike_rate<bowstr)||(bowstr==0))&&((economy<eco)||(eco==0)))
         {
-                printData();
+                printAllRound();
         }
 }
 int allrounder::base_of_AllRound() const
