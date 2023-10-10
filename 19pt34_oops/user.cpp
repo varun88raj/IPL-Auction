@@ -381,7 +381,7 @@ void checkBuy(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>&
 
 int getFlag(int buy_id)
 {
-        int flag;
+        int flag=0;
         if(buy_id>=1 && buy_id<=15)
         {
                 flag=1;
