@@ -1,17 +1,12 @@
 #include <iostream>
 #include"team_details.h"
 using namespace std;
+details::details(const std::string& name, int players, int foreign_players,long long int team_purse, int batsmans, int bowlers,
+            int all_rounders, int wicketkeepers): team_name(name), no_of_players(players), no_of_foreign_players(foreign_players),
+            purse(team_purse), no_of_batsmans(batsmans), no_of_bowlers(bowlers),
+            no_of_All_rounders(all_rounders), no_of_wicketkeepers(wicketkeepers){}
 
-void details::setdetails(int n,int fn,long int p,int ba,int bo,int a,int w)
-{
-        no_of_players=n;
-        no_of_foreign_players=fn;
-        purse=p;
-        no_of_batsmans=ba;
-        no_of_bowlers=bo;
-        no_of_All_rounders=a;
-        no_of_wicketkeepers=w;
-}
+
 void details::display() const
 {
         cout<<"Slots remaining         :"<<25-no_of_players<<"\n";
