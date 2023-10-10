@@ -40,6 +40,11 @@ int choose(array<details,8>& team,details& yourTeam)
         {
                 cout<<"Choose your team .\n(1).Mumbai Indians\n(2).Royal Challengers Bangalore\n(3).Kolkata Knight Riders\n(4).Chennai Super Kings\n(5).Kings XI Punjab\n(6).Delhi Capitals\n(7).Sun Risers Hyderabad\n(8).Rajasthan Royals\n";
                 cin>>choice;
+                if (choice>=9 || choice<1)
+                {
+                        cout<<"Invalid choice\n";
+                        break;
+                }
                 for (int i=1;i<=8;i++)
                 {
                         if(choice==i)
@@ -49,10 +54,6 @@ int choose(array<details,8>& team,details& yourTeam)
                                 cout<<"you have selected "<<yourTeam.team_name<<"\n";
                                 break;
                         }
-                }
-                if (choice>9 && choice<1)
-                {
-                        cout<<"Invalid choice\n";
                 }
         }
         yourTeam.display();
