@@ -31,447 +31,286 @@ int check(vector<int>sold,int iD)
                 return 1;
         }
 }
-float myatof(char temp[20])
+
+int choose(array<details,8>& team,details& yourTeam)
 {
-        float res1=0;
-        float res2=0;
-        float result;
-        int j=1;
-        int r;
-        int i;
-        for(i=strlen(temp)-1;temp[i]!='.';i--)
-        {
-              r=int(temp[i]-48);
-              res1+=j*r;
-              j=j*10;
-        }
-        j=1;
-        for(int k=i-1;k>=0;k--)
-        {
-              r=int(temp[k]-48);
-              res2+=j*r;
-              j=j*10;
-        }
-        result=res2+res1/100;
-        return result;
-}
-int myatoi(char temp[20])
-{
-        int result=0;
-        int j=1;
-        int r;
-        for(int i=strlen(temp)-1;i>=0;i--)
-        {
-                r=int(temp[i]-48);
-                result+=j*r;
-                j=j*10;
-        }
-        return result;
-}
-void user::Login()
-{
-        string un;
-        cout<<"Enter user name ";
-        cin>>un;
-        fflush(stdin);
-        cout<<"Welcome to ipl auction game "<<username<<"\n";
         int flag=1;
         int choice;
-        details Mumbai_Indians;
-        details Royal_Challengers_Bangalore;
-        details Kolkata_Knight_Riders;
-        details Chennai_Super_Kings;
-        details Kings_XI_Punjab;
-        details Delhi_Capitals;
-        details Sun_Risers_Hyderabad;
-        details Rajasthan_Royals;
-        Mumbai_Indians.setdetails(18,6,130500000,3,7,5,3);
-        Royal_Challengers_Bangalore.setdetails(13,2,279000000,4,4,4,1);
-        Kolkata_Knight_Riders.setdetails(14,4,356500000,4,7,2,1);
-        Chennai_Super_Kings.setdetails(18,6,146000000,5,6,5,2);
-        Kings_XI_Punjab.setdetails(12,4,427000000,5,7,0,2);
-        Delhi_Capitals.setdetails(14,3,278500000,4,5,4,1);
-        Sun_Risers_Hyderabad.setdetails(18,6,170000000,3,9,3,3);
-        Rajasthan_Royals.setdetails(14,4,289000000,4,6,2,2);
-        details yourteam;
+        while(flag==1)
+        {
+                cout<<"Choose your team .\n(1).Mumbai Indians\n(2).Royal Challengers Bangalore\n(3).Kolkata Knight Riders\n(4).Chennai Super Kings\n(5).Kings XI Punjab\n(6).Delhi Capitals\n(7).Sun Risers Hyderabad\n(8).Rajasthan Royals\n";
+                cin>>choice;
+                for (int i=1;i<=8;i++)
+                {
+                        if (choice>9 && choice<1)
+                        {
+                                cout<<"Invalid choice\n";
+                                break;
+                        }
+                        else if(choice==i)
+                        {
+                                yourTeam=team[i-1];
+                                flag=0;
+                                cout<<"you have selected "<<yourTeam.team_name<<"\n";
+                                break;
+                        }
+                }
+        }
+        yourTeam.display();
+        return choice;
+}
+int instructions(details& yourteam)
+{
+        string username;
+        int choice;
+        cout<<"Enter user name ";
+        cin>>username;
+        cout<<"Welcome to ipl auction game "<<username<<"\n";
+        array<details, 8> teams = {{
+        {"Mumbai_Indians", 18, 6, 130500000, 3, 7, 5, 3},
+        {"Royal_Challengers_Bangalore", 13, 2, 279000000, 4, 4, 4, 1},
+        {"Kolkata_Knight_Riders", 14, 4, 356500000, 4, 7, 2, 1},
+        {"Chennai_Super_Kings", 18, 6, 146000000, 5, 6, 5, 2},
+        {"Kings_XI_Punjab", 12, 4, 427000000, 5, 7, 0, 2},
+        {"Delhi_Capitals", 14, 3, 278500000, 4, 5, 4, 1},
+        {"Sun_Risers_Hyderabad", 18, 6, 170000000, 3, 9, 3, 3},
+        {"Rajasthan_Royals", 14, 4, 289000000, 4, 6, 2, 2}}};
         cout<<"/*************** Welcome to real cricket ipl auction game ***************/";
         cout<<"/***************           Rules of the game              ***************\n";
         cout<<"You can choose any of the eight teams.\nGenerally the maximum number of players in a team is 25.";
         cout<<"\nAnd a team can have maximum of 8 foreign players.\nThis depends upon the team you choose.\n";
         cout<<"After choosing a team you will be given their details.\nYou can apply whatever filter you want to choose your team players.";
         cout<<"\nBid and compete with other teams and build the best team.\n";
-        while(flag==1)
+        choice = choose(teams,yourteam);
+        return choice;
+}
+
+void retrieveBat(array<array<string, 24>, 15>& arrbat,array<batsman, 15>& Ba)
+{
+        for(int j=0;j<15;j++)
         {
-                cout<<"Choose your team .\n";
-                cout<<"(1).Mumbai Indians\n";
-                cout<<"(2).Royal Challengers Bangalore\n";
-                cout<<"(3).Kolkata Knight Riders\n";
-                cout<<"(4).Chennai Super Kings\n";
-                cout<<"(5).Kings XI Punjab\n";
-                cout<<"(6).Delhi Capitals\n";
-                cout<<"(7).Sun Risers Hyderabad\n";
-                cout<<"(8).Rajasthan Royals\n";
-                cin>>choice;
-                switch(choice)
-                {
-                        case 1:
-                        {
-                                cout<<"You have selected Mumbai Indians \n";
-                                yourteam=Mumbai_Indians;
-                                flag=0;
-                                break;
-                        }
-                        case 2:
-                        {
-                                cout<<"You have selected Royal Challengers Bangalore\n";
-                                yourteam=Royal_Challengers_Bangalore;
-                                flag=0;
-                                break;
-                        }
-                        case 3:
-                        {
-                                cout<<"You have selected Kolkata Knight Riders\n";
-                                yourteam=Kolkata_Knight_Riders;
-                                flag=0;
-                                break;
-                        }
-                        case 4:
-                        {
-                                cout<<"You have selected Chennai Super Kings\n";
-                                yourteam=Chennai_Super_Kings;
-                                flag=0;
-                                break;
-                        }
-                        case 5:
-                        {
-                                cout<<"You have selected Kings XI Punjab\n";
-                                yourteam=Kings_XI_Punjab;
-                                flag=0;
-                                break;
-                        }
-                        case 6:
-                        {
-                                cout<<"You have selected Delhi Capitals\n";
-                                yourteam=Delhi_Capitals;
-                                flag=0;
-                                break;
-                        }
-                        case 7:
-                        {
-                                cout<<"You have selected Sun Risers Hyderabad\n";
-                                yourteam=Sun_Risers_Hyderabad;
-                                flag=0;
-                                break;
-                        }
-                        case 8:
-                        {
-                                cout<<"You have selected Rajasthan Royals\n";
-                                yourteam=Rajasthan_Royals;
-                                flag=0;
-                                break;
-                        }
-                        default:
-                        {
-                                cout<<"Invalid choice enter again \n";
-                                flag=1;
-                        }
-                }
+                int k=0;
+                string nam=arrbat[j][k];k++;
+                int match=stoi((arrbat[j][k]));k++;
+                int pd=stoi(arrbat[j][k]);k++;
+                int run=stoi(arrbat[j][k]);k++;
+                float bat_avg=stof(arrbat[j][k]);k++;
+                float bat_str=stof(arrbat[j][k]);k++;
+                int _50=stoi(arrbat[j][k]);k++;
+                int _100=stoi(arrbat[j][k]);k++;
+                int Best=stoi(arrbat[j][k]);k++;
+                string pos=arrbat[j][k];k++;
+                string typ=arrbat[j][k];k++;
+                string bah=arrbat[j][k];k++;
+                string boh=arrbat[j][k];k++;
+                string bow_typ=arrbat[j][k];k++;
+                string coun=arrbat[j][k];k++;
+                int base=stoi(arrbat[j][k]);
+                Ba[j].retrieveBatsman(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,pos,typ,bah,boh,bow_typ,coun,base);
         }
-        yourteam.display();
-        array<std::string, 8> teams = {"MI", "RCB", "KKR", "CSK", "KXIP", "DC", "SRH", "RR"};
-        string nam;
-        string coun;
-        string typ;
-        string bow_typ;
-        string boh;
-        string bah;
-        string pos;
-        int match;
-        int pd;
-        int run;
-        int _50;
-        int _100;
-        int Best;
-        int wicket;
-        int _4w;
-        int _5w;
-        int best_run;
-        int best_wic;
-        float bat_avg;
-        float bat_str;
-        float bowl_avg;
-        float bowl_str;
-        float eco;
-        int base;
-        array<batsman, 15> Ba;
-        array<bowler, 15> Bo;
-        array<allrounder, 15> Al;
-        cout<<"There are 15 available batsman 10 bowlers 8 all-rounders\n";
+}
+void retrieveBall(array<array<string, 24>, 15>& arrbow,array<bowler, 10>& Bo)
+{
+        for(int j=0;j<10;j++)
+        {
+                int k=0;
+                string nam=arrbow[j][k];k++;
+                int match=stoi((arrbow[j][k]));k++;
+                int pd=stoi(arrbow[j][k]);k++;
+                int wicket=stoi(arrbow[j][k]);k++;
+                float bowl_avg=stof(arrbow[j][k]);k++;
+                float bowl_str=stof(arrbow[j][k]);k++;
+                float eco=stof(arrbow[j][k]);k++;
+                int _4w=stoi(arrbow[j][k]);k++;
+                int _5w=stoi(arrbow[j][k]);k++;
+                int best_run=stoi(arrbow[j][k]);k++;
+                int best_wic=stoi(arrbow[j][k]);k++;
+                string pos=arrbow[j][k];k++;
+                string typ=arrbow[j][k];k++;
+                string bah=arrbow[j][k];k++;
+                string boh=arrbow[j][k];k++;
+                string bow_typ=arrbow[j][k];k++;
+                string coun=arrbow[j][k];k++;
+                int base=stoi(arrbow[j][k]);
+                Bo[j].retrieveBowler(nam,match,pd,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,pos,typ,bah,boh,bow_typ,coun,base);
+        }
+}
+
+void retrieveAlr(array<array<string, 24>, 15>& arr,array<allrounder, 8>& Al)
+{
+        for(int j=0;j<8;j++)
+        {
+                        int k=0;
+                        string nam=arr[j][k];k++;
+                        int match=stoi((arr[j][k]));k++;
+                        int pd=stoi(arr[j][k]);k++;
+                        int run=stoi(arr[j][k]);k++;
+                        float bat_avg=stof(arr[j][k]);k++;
+                        float bat_str=stof(arr[j][k]);k++;
+                        int _50=stoi(arr[j][k]);k++;
+                        int _100=stoi(arr[j][k]);k++;
+                        int Best=stoi(arr[j][k]);k++;
+                        int wicket=stoi(arr[j][k]);k++;
+                        float bowl_avg=stof(arr[j][k]);k++;
+                        float bowl_str=stof(arr[j][k]);k++;
+                        float eco=stof(arr[j][k]);k++;
+                        int _4w=stoi(arr[j][k]);k++;
+                        int _5w=stoi(arr[j][k]);k++;
+                        int best_run=stoi(arr[j][k]);k++;
+                        int best_wic=stoi(arr[j][k]);k++;
+                        string coun=arr[j][k];k++;
+                        string typ=arr[j][k];k++;
+                        string bow_typ=arr[j][k];k++;
+                        string boh=arr[j][k];k++;
+                        string bah=arr[j][k];k++;
+                        string pos=arr[j][k];k++;
+                        int base=stoi(arr[j][k]);
+                        Al[j].retrieveAllRound(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
+        }
+}
+void fileRead(string filename,array<array<string, 24>, 15>& arrPlayer,int Xmax,int Ymax)
+{
         ifstream file1;
-        file1.open("batsman_list.txt",ios::in);
-        char arrbat[15][16][20];
-        int x=0,y=0,z=0;
+        file1.open(filename,ios::in);
+        int x=0,y=0;
         char ch1;
+        arrPlayer[x][y]="";
         while(!file1.eof())
         {
                 file1>>ch1;
                 if(ch1!=',')
                 {
-                        arrbat[x][y][z]=ch1;
-                        z++;
+                        arrPlayer[x][y]+=ch1;
                 }
                 else if(ch1==',')
                 {
-                        arrbat[x][y][z]='\0';
-                        z=0;
                         y++;
-                }
-                else if(y==16)
-                {
-                        arrbat[x][y][z]='\0';
-                        x++;
-                        y=0;
-                        z=0;
+                        if(y==Ymax)
+                        {
+                                x++;
+                                y=0;
+                        }
+                        if(x!=Xmax)
+                        {
+                                arrPlayer[x][y]="";
+                        }
                 }
         }
         file1.close();
-        for(int j=0;j<15;j++)
+}
+
+void printDetails(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& Al)
+{
+     for(int i=0;i<15;i++)
         {
-                int k=0;
-                nam=arrbat[j][k];k++;
-                match=myatoi((arrbat[j][k]));k++;
-                pd=myatoi(arrbat[j][k]);k++;
-                run=myatoi(arrbat[j][k]);k++;
-                bat_avg=myatof(arrbat[j][k]);k++;
-                bat_str=myatof(arrbat[j][k]);k++;
-                _50=myatoi(arrbat[j][k]);k++;
-                _100=myatoi(arrbat[j][k]);k++;
-                Best=myatoi(arrbat[j][k]);k++;
-                pos=arrbat[j][k];k++;
-                typ=arrbat[j][k];k++;
-                bah=arrbat[j][k];k++;
-                boh=arrbat[j][k];k++;
-                bow_typ=arrbat[j][k];k++;
-                coun=arrbat[j][k];k++;
-                base=myatoi(arrbat[j][k]);
-                Ba[j].retrieveBatsman(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,pos,typ,bow_typ,bah,boh,coun,base);
+                Ba[i].printBatsman();
+                cout<<"\n-----------------\n";
         }
-        ifstream file2;
-        file2.open("bowler_list.txt",ios::in);
-        char arrbow[10][18][20];
-        x=0,y=0,z=0;
-        char ch2;
-        while(!file2.eof())
-        {
-                file2>>ch2;
-                if(ch2!=',')
-                {
-                        arrbow[x][y][z]=ch2;
-                        z++;
-                }
-                else if(ch2==',')
-                {
-                        arrbow[x][y][z]='\0';
-                        z=0;
-                        y++;
-                }
-                else if(y==18)
-                {
-                        arrbow[x][y][z]='\0';
-                        x++;
-                        y=0;
-                        z=0;
-                }
-        }
-        file2.close();
-        for(int j=0;j<10;j++)
-        {
-                int k=0;
-                nam=arrbow[j][k];k++;
-                match=myatoi((arrbow[j][k]));k++;
-                pd=myatoi(arrbow[j][k]);k++;
-                wicket=myatoi(arrbow[j][k]);k++;
-                bowl_avg=myatof(arrbow[j][k]);k++;
-                bowl_str=myatof(arrbow[j][k]);k++;
-                eco=myatof(arrbow[j][k]);k++;
-                _4w=myatoi(arrbow[j][k]);k++;
-                _5w=myatoi(arrbow[j][k]);k++;
-                best_run=myatoi(arrbow[j][k]);k++;
-                best_wic=myatoi(arrbow[j][k]);k++;
-                pos=arrbow[j][k];k++;
-                typ=arrbow[j][k];k++;
-                bah=arrbow[j][k];k++;
-                boh=arrbow[j][k];k++;
-                bow_typ=arrbow[j][k];k++;
-                coun=arrbow[j][k];k++;
-                base=myatoi(arrbow[j][k]);
-                Bo[j].retrieveBowler(nam,match,pd,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,pos,typ,bow_typ,bah,boh,coun,base);
-        }
-        char arr[8][24][20];
-        x=0;y=0;z=0;
-        fstream file3;
-        file3.open("all-rounder_list.txt",ios::in);
-        if(!file3)
-        {
-                cout<<"Error in creating file.."<<endl;
-        }
-        char ch;
-        while(!file3.eof())
-        {
-                file3>>ch;
-                if(ch!=',')
-                {
-                        arr[x][y][z]=ch;
-                        z++;
-                }
-                else if(ch==',')
-                {
-                        arr[x][y][z]='\0';
-                        z=0;
-                        y++;
-                }
-                if(y==24)
-                {
-                        x++;
-                        y=0;
-                        z=0;
-                }
-        }
-        file3.close();
-        for(int j=0;j<8;j++)
-        {
-                        int k=0;
-                        nam=arr[j][k];k++;
-                        match=myatoi((arr[j][k]));k++;
-                        pd=myatoi(arr[j][k]);k++;
-                        run=myatoi(arr[j][k]);k++;
-                        bat_avg=myatof(arr[j][k]);k++;
-                        bat_str=myatof(arr[j][k]);k++;
-                        _50=myatoi(arr[j][k]);k++;
-                        _100=myatoi(arr[j][k]);k++;
-                        Best=myatoi(arr[j][k]);k++;
-                        wicket=myatoi(arr[j][k]);k++;
-                        bowl_avg=myatof(arr[j][k]);k++;
-                        bowl_str=myatof(arr[j][k]);k++;
-                        eco=myatof(arr[j][k]);k++;
-                        _4w=myatoi(arr[j][k]);k++;
-                        _5w=myatoi(arr[j][k]);k++;
-                        best_run=myatoi(arr[j][k]);k++;
-                        best_wic=myatoi(arr[j][k]);k++;
-                        coun=arr[j][k];k++;
-                        typ=arr[j][k];k++;
-                        bow_typ=arr[j][k];k++;
-                        boh=arr[j][k];k++;
-                        bah=arr[j][k];k++;
-                        pos=arr[j][k];k++;
-                        base=myatoi(arr[j][k]);
-                        Al[j].retrieveAllRound(nam,match,pd,run,bat_avg,bat_str,_50,_100,Best,wicket,bowl_avg,bowl_str,eco,_4w,_5w,best_run,best_wic,coun,typ,bow_typ,boh,bah,pos,base);
-        }
-        for(int i=0;i<15;i++)
-        {
-                Ba[i].printData();
-        }
-        cout<<"\n-------------------------------------------------------------------------\n";
         for(int i=0;i<10;i++)
         {
-                Bo[i].printData();
+                Bo[i].printBowler();
+                cout<<"\n-----------------\n";
         }
-        cout<<"\n-------------------------------------------------------------------------\n";
+
         for(int i=0;i<8;i++)
         {
-                Al[i].printData();
+                Al[i].printAllRound();
+                cout<<"\n-----------------\n";
         }
-        cout<<"\n-------------------------------------------------------------------------\n";
+}
 
-        char chfilter;
-        do
+void filterBowler(array<bowler, 10>& Bo,array<allrounder, 8>& Al,int r,float avg,float str,int opinion,int match)
+{
+    int wicket;
+    float bowl_avg;
+    float bowl_str;
+    float eco;
+    cout<<"Enter your conditions for runs,batting average and strike rate. If no filter is needed enter 0\n";
+    cout<<"Wickets\nBowling average\nBowling strike rate\nEconomy";
+    cin>>wicket>>bowl_avg>>bowl_str>>eco;
+    if(opinion==2)
+    {
+            for(int i=0;i<10;i++)
+            {
+                Bo[i].filterBowler(wicket,bowl_avg,bowl_str,eco);
+            }
+    }
+    else
+    {
+            for(int i=0;i<8;i++)
+            {
+                Al[i].filterAllRound(match,r,avg,str,wicket,bowl_avg,bowl_str,eco);
+            }
+    }
+}
+
+void filterBatsman(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& Al,int opinion,int match)
+{
+    int run;
+    float bat_avg;
+    float bat_str;
+    cout<<"Enter your conditions for runs,batting average and strike rate. If no filter is needed enter 0\n";
+    cout<<"Runs\nBatting average\nBatting strike rate\n";
+    cin>>run>>bat_avg>>bat_str;
+    if(opinion==1)
+    {
+        for(int i=0;i<15;i++)
         {
+            Ba[i].filterBatsman(match,run,bat_avg,bat_str);
+        }
+    }
+    else if(opinion == 3)
+    {
+        for(int i=0;i<10;i++)
+        {
+                filterBowler(Bo,Al,run,bat_avg,bat_str,opinion,match);
+        }
+    }
+}
+
+
+void filter(array<batsman, 15>& Ba,array<bowler, 10>& Bo,array<allrounder, 8>& Al)
+{
+    char chfilter;
+    do{
                 int opinion;
-                int yes_no;
-                cout<<"Enter the list of players you want filter out and see \n";
-                cout<<"(1).Batsman (2).Bowler (3).All-rounder \n";
+                int match;
+                cout<<"Enter the list of players you want filter out and see \n(1).Batsman (2).Bowler (3).All-rounder \n";
                 cin>>opinion;
+                cout<<"Enter your conditions for matches if not needed input 0";
+                cin>>match;
                 if(opinion==1||opinion==3)
                 {
-                        match=0;run=0;bat_avg=0;bat_str=0;
-                        cout<<"Applying filter \n";
-                        cout<<"For matches 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>match;
-                        }
-                        cout<<"For runs 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>run;
-                        }
-                        cout<<"For batting average 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>bat_avg;
-                        }
-                        cout<<"For batting strike rate 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>bat_str;
-                        }
+                        filterBatsman(Ba,Bo,Al,opinion,match);
                 }
-                if(opinion==2||opinion==3)
+                else if(opinion==2)
                 {
-                        wicket=0;bowl_avg=0;bowl_str=0;eco=0;
-                        cout<<"For wickets 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>wicket;
-                        }
-                        cout<<"For bowling average 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>bowl_avg;
-                        }
-                        cout<<"For bowling strike rate 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>bowl_str;
-                        }
-                        cout<<"For economy 1.yes ";cin>>yes_no;
-                        if(yes_no==1)
-                        {
-                                cout<<"Enter condition ";
-                                cin>>eco;
-                        }
-                }
-                if(opinion==1)
-                {
-                        for(int i=0;i<15;i++)
-                        {
-                                Ba[i].filterBatsman(match,run,bat_avg,bat_str);
-                        }
-                }
-                if(opinion==2)
-                {
-                        for(int i=0;i<10;i++)
-                        {
-                                Bo[i].filterBowler(wicket,bowl_avg,bowl_str,eco);
-                        }
-                }
-                if(opinion==3)
-                {
-                        for(int i=0;i<8;i++)
-                        {
-                                Al[i].filterAllRound(match,run,bat_avg,bat_str,wicket,bowl_avg,bowl_str,eco);
-                        }
+                        filterBowler(Bo,Al,0,0,0,2,match);
                 }
                 cout<<"There may be chances that no players satisfy all your filters press 'y' to apply filter again \n\n";
                 cin>>chfilter;
         }while(chfilter=='y');
+}
+void user::Login()
+{
+        details yourteam("name",0,0,0,0,0,0,0);
+        int choice=instructions(yourteam);
+        array<std::string, 8> teams = {"MI", "RCB", "KKR", "CSK", "KXIP", "DC", "SRH", "RR"};
+        array<batsman, 15> Ba;
+        array<bowler, 10> Bo;
+        array<allrounder, 8> Al;
+        cout<<"There are 15 available batsman 10 bowlers 8 all-rounders\n";
+        array<array<string, 24>, 15> arrBat;
+        array<array<string, 24>, 15> arrBow;
+        array<array<string, 24>, 15> arrAlr;
+        fileRead("batsman_list.txt",arrBat,15,16);
+        fileRead("bowler_list.txt",arrBow,10,18);
+        fileRead("all-rounder_list.txt",arrAlr,8,24);
+        retrieveBat(arrBat,Ba);
+        retrieveBall(arrBow,Bo);
+        retrieveAlr(arrAlr,Al);
+        printDetails(Ba,Bo,Al);
+        filter(Ba,Bo,Al);
         cout<<"\n\nHope you have selected your players after filtering \n\n";
         char chbuy;
         char ch_continue;
