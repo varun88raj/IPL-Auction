@@ -42,18 +42,17 @@ int choose(array<details,8>& team,details& yourTeam)
                 cin>>choice;
                 for (int i=1;i<=8;i++)
                 {
-                        if (choice>9 && choice<1)
-                        {
-                                cout<<"Invalid choice\n";
-                                break;
-                        }
-                        else if(choice==i)
+                        if(choice==i)
                         {
                                 yourTeam=team[i-1];
                                 flag=0;
                                 cout<<"you have selected "<<yourTeam.team_name<<"\n";
                                 break;
                         }
+                }
+                if (choice>9 && choice<1)
+                {
+                        cout<<"Invalid choice\n";
                 }
         }
         yourTeam.display();
